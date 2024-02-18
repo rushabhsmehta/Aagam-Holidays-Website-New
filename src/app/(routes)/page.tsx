@@ -9,7 +9,7 @@ import { Suspense } from "react";
 import Loading from "./loading";
 
 
-const Home = async () => {
+const HomePage = async () => {
 
   // const products = await getProducts({ isFeatured: true });
   // const tourPackages = await getTourPackages({ storeId : "3eb7df82-57cc-4c68-aaeb-6b2531cd72d5" });
@@ -45,4 +45,4 @@ const Home = async () => {
   )
 };
 
-export default Home;
+export default HomePage;

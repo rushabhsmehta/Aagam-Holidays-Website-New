@@ -1,6 +1,13 @@
+import Footer from '@/components/footer'
+import Navbar from '@/components/navbar'
+import ScrollToTop from '@/components/ui/ScrollToTop'
+import ModalProvider from '@/providers/modal-provider'
+import ToastProvider from '@/providers/toast-provider'
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Urbanist } from 'next/font/google'
+
+const font = Urbanist({ subsets: ['latin'] })
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,7 +23,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={font.className}>
+        <ToastProvider />
+        <ModalProvider />
+        <Navbar />
+        {children}
+        {/* <Analytics /> */}
+        <ScrollToTop/>
+        <Footer />
+      </body>
     </html>
   )
 }
