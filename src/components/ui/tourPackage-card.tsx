@@ -5,14 +5,12 @@ import { useRouter } from "next/navigation";
 
 import Currency from "@/components/ui/currency";
 import getLocations from "@/actions/get-location";
-import { TourPackage } from "../../../types";
+import { Location, TourPackage } from "../../../types";
 import { LucidePhone, LucideStar } from "lucide-react";
 import { Button } from "./button";
+import getLocation from "@/actions/get-location";
 
-interface Location
-{
-  label : string;
-}
+
 interface TourPackageCard {
   data: TourPackage;
 }
@@ -29,7 +27,7 @@ const TourPackageCard: React.FC<TourPackageCard> = async ({
     router.push(`/tourPackage/${data?.id}`);
   };
 
-   const location = await getLocations(data?.locationId);
+   const location = await getLocation(data?.locationId);
   /*  const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
      event.stopPropagation();
  
