@@ -16,7 +16,7 @@ export default function NavbarNew() {
             <div>
               {/* Website Logo */}
               <Link href="/" className="flex items-center py-1 px-2">
-                  <Image src="/images/company-logo.png" alt="Logo" className="h-12 w-36 mr-2" height = {12} width= {36} />
+                  <Image src="/images/company-logo.png" alt="Logo" className="h-12 w-36 mr-2" height = {120} width= {360} />
                 
               </Link>
             </div>
