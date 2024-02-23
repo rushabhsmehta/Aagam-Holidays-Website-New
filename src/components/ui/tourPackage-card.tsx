@@ -12,7 +12,7 @@ interface TourPackageCard {
   location : Location;
 }
 
-const TourPackageCard: React.FC<TourPackageCard> = async ({
+const TourPackageCard: React.FC<TourPackageCard> =  ({
   data,
   location,
   }) => {
