@@ -3,12 +3,9 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-import Currency from "@/components/ui/currency";
-import { Location, TourPackage } from "../../../types";
+import { TourPackage } from "../../../types";
 import { LucidePhone, LucideStar } from "lucide-react";
 import { Button } from "./button";
-import getLocation from "@/actions/get-location";
-
 
 interface TourPackageCard {
   data: TourPackage;
@@ -26,7 +23,6 @@ const TourPackageCard: React.FC<TourPackageCard> = async ({
     router.push(`/tourPackage/${data?.id}`);
   };
 
-   const location = await getLocation(data?.locationId);
   /*  const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
      event.stopPropagation();
  
@@ -61,10 +57,11 @@ const TourPackageCard: React.FC<TourPackageCard> = async ({
 
       {/* Top section with label, star icon, and rating */}
       <div className="flex justify-between items-center m-4">
-        <span className="text-sm font-semibold text-gray-700">{location.label}</span>
+        <span className="text-sm font-semibold text-gray-700">{data.locationId}</span>
         <div className="flex items-center">
           <LucideStar className="text-sm text-yellow-400 ml-4 mb-1 mr-2" />
           <span className="text-sm text-yellow-400">5.0</span>
+          <span className="text-sm text-gray-500 ml-1">({data.tourPackageName})</span>
         </div>
       </div>
 

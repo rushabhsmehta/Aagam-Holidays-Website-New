@@ -3,18 +3,15 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Loading from "@/app/loading";
 import { Suspense } from "react";
-import { Location, Hotel, TourPackage } from "../../../types";
-import getLocations from "@/actions/get-location";
-import getLocation from "@/actions/get-location";
+import {  Hotel, TourPackage } from "../../../types";
 
 
 interface TourPackageDetailsProps {
   data: TourPackage;
-  location: Location;
   hotels: Hotel[];
 }
 
-const TourPackageDetails: React.FC<TourPackageDetailsProps> = async ({ data, hotels }) => {
+const TourPackageDetails: React.FC<TourPackageDetailsProps> =  ({ data, hotels }) => {
   const router = useRouter();
 
   const sortedItineraries = [...data.itineraries].sort((a, b) => {
@@ -27,7 +24,6 @@ const TourPackageDetails: React.FC<TourPackageDetailsProps> = async ({ data, hot
     router.back();
   };
 
-  const location = await getLocation(data.locationId);
 
   return (
     <div className="min-h-screen flex flex-col sm:px-6 lg:px-40 py-10">
@@ -40,7 +36,7 @@ const TourPackageDetails: React.FC<TourPackageDetailsProps> = async ({ data, hot
               {data.tourPackageName}
             </span>
 
-            <p className="bg-gradient-to-r from-yellow-500 via-red-400 to-orange-400 text-transparent bg-clip-text text-sm py-4">{data.numDaysNight} - {location.label}</p>
+            <p className="bg-gradient-to-r from-yellow-500 via-red-400 to-orange-400 text-transparent bg-clip-text text-sm py-4">{data.numDaysNight} - {data.locationId }</p>
           </h1>
         </div>
 
