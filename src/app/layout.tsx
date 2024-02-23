@@ -1,5 +1,4 @@
 import Footer from '@/components/footer'
-import Navbar from '@/components/navbar'
 import ScrollToTop from '@/components/ui/ScrollToTop'
 import ModalProvider from '@/providers/modal-provider'
 import ToastProvider from '@/providers/toast-provider'
