@@ -59,7 +59,7 @@ const TourPackagePage: React.FC<TourPackagePageProps> = async ({
     <div className="space-y-4 px-8 py-20">
       <h3 className="font-bold text-3xl">Tour Packages </h3>
       {tourPackages.length === 0 && <NoResults />}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <Suspense fallback={<Loading />}>
 
           {tourPackages.map((tourPackage) => (

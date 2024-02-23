@@ -26,7 +26,7 @@ const Home = async () => {
   return (
     <Container>
       <div className="">
-      <Suspense fallback={<Loading/>}>
+        <Suspense fallback={<Loading />}>
 
           <HeroSectionNew />
           {/*    <div className="flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8">
@@ -41,9 +41,15 @@ const Home = async () => {
             <LocationList title="Tour Packages" items={locations} />
           </div>
 
-          <Testimonials/>
-          <ContactUs/>
-          <AboutUs/>
+          <Testimonials />
+
+          <div id="contact-us" className="flex flex-col gap-y-8 pb-10 px-4 sm:px-6 lg:px-8">
+            <ContactUs />
+          </div>
+
+          <div id="about-us" className="flex flex-col gap-y-8 pb-10 px-4 sm:px-6 lg:px-8">
+            <AboutUs />
+          </div>
 
 
           {/*  <div className="flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8">
