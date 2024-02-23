@@ -12,16 +12,16 @@ import HeroSectionNew from "@/components/ui/hero-section-new";
 import AboutUs from "@/components/about-us";
 import ContactUs from "@/components/contact-us";
 import Testimonials from "@/components/testimonials";
+import { Location } from "../../types";
 
-
-const Home = async () => {
+const Home =  async () => {
 
   // const products = await getProducts({ isFeatured: true });
   // const tourPackages = await getTourPackages({ storeId : "3eb7df82-57cc-4c68-aaeb-6b2531cd72d5" });
   // const tourPackageQueries = await getTourPackageQueries({ storeId : "3eb7df82-57cc-4c68-aaeb-6b2531cd72d5" });
 
-  const billboard = await getBillboard("49ec26c8-24b0-4149-a342-63a0c7ce3da5");
-  const locations = await getLocationsByStore({ storeId: "3eb7df82-57cc-4c68-aaeb-6b2531cd72d5" });
+ // const billboard =  getBillboard("49ec26c8-24b0-4149-a342-63a0c7ce3da5");
+  const locations =  await getLocationsByStore({ storeId: "3eb7df82-57cc-4c68-aaeb-6b2531cd72d5" });
 
   return (
     <Container>
