@@ -23,7 +23,7 @@ const LocationList: React.FC<LocationListProps> = ({ title, items }) => {
       <h3 className="font-bold text-3xl">{title}</h3>
       <Carousel
       opts = {{
-        slidesToScroll : 3,
+        slidesToScroll : 1,
       }} className="w-full">
         <CarouselContent>
           {items.map((item, index) => (

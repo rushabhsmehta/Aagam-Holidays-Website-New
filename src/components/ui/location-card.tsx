@@ -46,56 +46,59 @@ const LocationCard: React.FC<LocationCard> = ({
    }; */
 
   return (
-    <div onClick={handleClick} >
-      {/* Image & actions */}
-        <Image
-          className="rounded"
-          src={data.imageUrl}
-          alt ={data.imageUrl}
-          sizes="100vw"
-          style={{
-            width: 'auto',
-            height: '350px',
-            objectFit : 'cover'
-          }}
-          width={300}
-          height={500}
-          />
+    <div
+      onClick={handleClick}
+      className="cursor-pointer border-2 border-blaack-500 rounded-md p-3 hover:border-black-600 hover:shadow-lg transform transition duration-200 ease-in-out hover:-translate-y-1 hover:scale-105"
+    >
 
-          {/* Top section with label, star icon, and rating */}
-          <div className="flex justify-between items-center m-4">
-            <span className="text-sm font-semibold text-gray-700">{data.label}</span>
-            <div className="flex items-center">
-              <LucideStar className="text-sm text-yellow-400 ml-4 mb-1" />
-              <span className="text-sm text-yellow-400">5.0</span>
-              <span className="text-sm text-gray-500 ml-1">({data.label})</span>
-            </div>
-          </div>
+      <Image
+        className="rounded"
+        src={data.imageUrl}
+        alt={data.imageUrl}
+        sizes="100vw"
+        style={{
+          width: 'auto',
+          height: '350px',
+          objectFit: 'cover'
+        }}
+        width={300}
+        height={500}
+      />
 
-          {/* Middle section with package title */}
-          <div className="text-lg font-bold text-gray-800 ml-4 mb-1">{data.label}</div>
+      {/* Top section with label, star icon, and rating */}
+      <div className="flex justify-between items-center m-4">
+        <span className="text-sm font-semibold text-gray-700">{data.label}</span>
+        <div className="flex items-center">
+          <LucideStar className="text-sm text-yellow-400 ml-4 mb-1 mr-2" />
+          <span className="text-sm text-yellow-400">5.0</span>
+          <span className="text-sm text-gray-500 ml-1">({data.label})</span>
+        </div>
+      </div>
 
-          {/* Sale badge */}
-          <div className="bg-gradient-to-r from-red-500 to-red-700 text-white text-xs font-bold uppercase px-2 py-1 inline-block rounded ml-4 mb-1">
-            {data.label}
-          </div>
+      {/* Middle section with package title */}
+      <div className="text-lg font-bold text-gray-800 ml-4 mb-1">{data.label}</div>
+
+      {/* Sale badge */}
+      <div className="bg-gradient-to-r from-red-500 to-red-700 text-white text-xs font-bold uppercase px-2 py-1 inline-block rounded ml-4 mb-1">
+        {data.label}
+      </div>
 
 
-          {/* Pricing section */}
-          <div className="flex items-baseline mb-4">
-            <span className="text-gray-500 line-through ml-4 mb-1">{data.label}</span>
-            <span className="text-lg font-bold text-red-600 ml-4 mb-1">{data.label}</span>
-          </div>
+      {/* Pricing section */}
+      <div className="flex items-baseline mb-4">
+        <span className="text-gray-500 line-through ml-4 mb-1">{data.label}</span>
+        <span className="text-lg font-bold text-red-600 ml-4 mb-1">{data.label}</span>
+      </div>
 
-          {/* Action buttons */}
-          <div className="flex justify-between gap-2 ml-4 mb-1">
-            <Button variant="outline" className="border border-green-500 hover:border-green-600" >
-              <LucidePhone className="mr-2" /> Call Now
-            </Button>
-            <Button className="bg-green-600 text-white px-4 py-2 rounded-full mr-4">
-              Request Callback
-            </Button>
-          </div>
+      {/* Action buttons */}
+      <div className="flex justify-between gap-2 ml-4 mb-4">
+        <Button variant="outline" className="border border-green-500 hover:border-green-600" >
+          <LucidePhone className="mr-2" /> Call Now
+        </Button>
+        <Button className="bg-green-600 text-white px-4 py-2 rounded-full mr-4">
+          Request Callback
+        </Button>
+      </div>
 
 
 
@@ -128,7 +131,7 @@ const LocationCard: React.FC<LocationCard> = ({
      <div className="flex items-center justify-between">
         <Currency value={data?.label} />
       </div> 
- */}    </div>
+ */}    </div >
   );
 }
 

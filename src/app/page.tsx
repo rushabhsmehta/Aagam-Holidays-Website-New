@@ -8,6 +8,10 @@ import SearchBar from "@/components/ui/searchBarforLocations";
 import { Suspense } from "react";
 import Loading from "./loading";
 import ContactUS from "@/components/contact-us";
+import HeroSectionNew from "@/components/ui/hero-section-new";
+import AboutUs from "@/components/about-us";
+import ContactUs from "@/components/contact-us";
+import Testimonials from "@/components/testimonials";
 
 
 const Home = async () => {
@@ -24,7 +28,7 @@ const Home = async () => {
       <div className="">
       <Suspense fallback={<Loading/>}>
 
-          <HeroSection />
+          <HeroSectionNew />
           {/*    <div className="flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8">
           <ProductList title="Featured Products" items={products} />
         </div>
@@ -37,7 +41,10 @@ const Home = async () => {
             <LocationList title="Tour Packages" items={locations} />
           </div>
 
-          <ContactUS/>
+          <Testimonials/>
+          <ContactUs/>
+          <AboutUs/>
+
 
           {/*  <div className="flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8">
           <TourPackageQueryList title="Tour Packages" items={tourPackageQueries} />
