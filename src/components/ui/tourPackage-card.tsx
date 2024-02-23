@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 import Currency from "@/components/ui/currency";
-import getLocations from "@/actions/get-location";
 import { Location, TourPackage } from "../../../types";
 import { LucidePhone, LucideStar } from "lucide-react";
 import { Button } from "./button";
