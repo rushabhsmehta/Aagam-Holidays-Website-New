@@ -7,6 +7,7 @@ import HeroSection from "@/components/ui/herosection";
 import SearchBar from "@/components/ui/searchBarforLocations";
 import { Suspense } from "react";
 import Loading from "./loading";
+import ContactUS from "@/components/contact-us";
 
 
 const Home = async () => {
@@ -35,6 +36,8 @@ const Home = async () => {
           <div className="flex flex-col gap-y-8 pb-10 px-4 sm:px-6 lg:px-8">
             <LocationList title="Tour Packages" items={locations} />
           </div>
+
+          <ContactUS/>
 
           {/*  <div className="flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8">
           <TourPackageQueryList title="Tour Packages" items={tourPackageQueries} />

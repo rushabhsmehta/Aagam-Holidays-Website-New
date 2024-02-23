@@ -6,6 +6,7 @@ import ToastProvider from '@/providers/toast-provider'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter, Urbanist } from 'next/font/google'
+import { NabarNew } from '@/components/ui/navbar-new'
 
 const font = Urbanist({ subsets: ['latin'] })
 
@@ -26,8 +27,8 @@ export default function RootLayout({
       <body className={font.className}>
         <ToastProvider />
         <ModalProvider />
-        <Navbar />
-        {children}
+        <Navbar/>  
+              {children}
         {/* <Analytics /> */}
         <ScrollToTop/>
         <Footer />
