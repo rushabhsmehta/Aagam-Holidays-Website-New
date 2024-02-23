@@ -9,7 +9,7 @@ import Loading from '@/app/loading';
 
 interface TourPackagePageProps {
   params: {
-    tourPackageId: string;
+    tourPackageId: string;    
   },
 }
 
@@ -57,7 +57,7 @@ const TourPackagePage: React.FC<TourPackagePageProps> = async ({
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <Suspense fallback={<Loading />}>
-        <TourPackageDetails data={tourPackage} hotels={hotels} />
+        <TourPackageDetails data={tourPackage} location = {location} hotels={hotels} />
       </Suspense>
     </div>
 

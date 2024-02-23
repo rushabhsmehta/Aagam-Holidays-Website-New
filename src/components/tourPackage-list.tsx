@@ -1,15 +1,17 @@
 import TourPackageCard from "@/components/ui/tourPackage-card";
-import {  TourPackage } from "../../types";
+import {  Location, TourPackage } from "../../types";
 import NoResults from "@/components/ui/no-results";
 
 interface  TourPackageListProps {
   title: string;
   items:  TourPackage[]
+  location : Location
 }
 
 const  TourPackageList: React.FC< TourPackageListProps> = ({
   title,
-  items
+  items,
+  location,
 }) => {
   return (
     <div className="space-y-4">
@@ -17,7 +19,7 @@ const  TourPackageList: React.FC< TourPackageListProps> = ({
       {items.length === 0 && <NoResults />}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {items.map((item) => (
-          <TourPackageCard key={item.id} data={item} />
+          <TourPackageCard key={item.id} location = {location} data={item} />
         ))}
       </div>
     </div>

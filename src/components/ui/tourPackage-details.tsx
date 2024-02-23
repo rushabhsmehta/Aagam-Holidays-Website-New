@@ -3,14 +3,15 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Loading from "@/app/loading";
 import { Suspense } from "react";
-import {  Hotel, TourPackage } from "../../../types";
+import { Location, Hotel, TourPackage } from "../../../types";
 
 interface TourPackageDetailsProps {
   data: TourPackage;
   hotels: Hotel[];
+  location : Location;
 }
 
-const TourPackageDetails: React.FC<TourPackageDetailsProps> =  ({ data, hotels }) => {
+const TourPackageDetails: React.FC<TourPackageDetailsProps> =  ({ data, hotels, location }) => {
   const router = useRouter();
 
   const sortedItineraries = [...data.itineraries].sort((a, b) => {
@@ -35,7 +36,7 @@ const TourPackageDetails: React.FC<TourPackageDetailsProps> =  ({ data, hotels }
               {data.tourPackageName}
             </span>
 
-            <p className="bg-gradient-to-r from-yellow-500 via-red-400 to-orange-400 text-transparent bg-clip-text text-sm py-4">{data.numDaysNight} - {data.locationId }</p>
+            <p className="bg-gradient-to-r from-yellow-500 via-red-400 to-orange-400 text-transparent bg-clip-text text-sm py-4">{data.numDaysNight} - {location.label }</p>
           </h1>
         </div>
 

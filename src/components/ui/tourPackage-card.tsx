@@ -3,18 +3,19 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-import { TourPackage } from "../../../types";
+import { Location, TourPackage } from "../../../types";
 import { LucidePhone, LucideStar } from "lucide-react";
 import { Button } from "./button";
 
 interface TourPackageCard {
   data: TourPackage;
+  location : Location;
 }
 
 const TourPackageCard: React.FC<TourPackageCard> = async ({
   data,
-  
-}) => {
+  location,
+  }) => {
   //  const previewModal = usePreviewModal();
   //  const cart = useCart();
   const router = useRouter();
@@ -57,7 +58,7 @@ const TourPackageCard: React.FC<TourPackageCard> = async ({
 
       {/* Top section with label, star icon, and rating */}
       <div className="flex justify-between items-center m-4">
-        <span className="text-sm font-semibold text-gray-700">{data.locationId}</span>
+        <span className="text-sm font-semibold text-gray-700">{location.label }</span>
         <div className="flex items-center">
           <LucideStar className="text-sm text-yellow-400 ml-4 mb-1 mr-2" />
           <span className="text-sm text-yellow-400">5.0</span>
