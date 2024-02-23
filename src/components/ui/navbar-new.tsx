@@ -37,7 +37,7 @@ export default async function NavbarNew() {
                     <ul className="space-y-1">
                       {locations.slice(0, 5).map((location, index) => (
                         <li key={index} className="truncate">
-                          <Link href={`/destinations/${location.id}`} className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-500 hover:text-white transition duration-300">
+                          <Link href={`/tourPackages/${location.id}`} className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-500 hover:text-white transition duration-300">
                             {location.label}
                           </Link>
                         </li>
