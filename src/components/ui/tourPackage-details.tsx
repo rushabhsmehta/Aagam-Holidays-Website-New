@@ -4,6 +4,8 @@ import { useRouter } from "next/navigation";
 import Loading from "@/app/loading";
 import { Suspense } from "react";
 import { Location, Hotel, TourPackage } from "../../../types";
+import getLocations from "@/actions/get-location";
+import getLocation from "@/actions/get-location";
 
 
 interface TourPackageDetailsProps {
@@ -12,7 +14,7 @@ interface TourPackageDetailsProps {
   hotels: Hotel[];
 }
 
-const TourPackageDetails: React.FC<TourPackageDetailsProps> = ({ data, location, hotels }) => {
+const TourPackageDetails: React.FC<TourPackageDetailsProps> = async ({ data, hotels }) => {
   const router = useRouter();
 
   const sortedItineraries = [...data.itineraries].sort((a, b) => {
@@ -25,7 +27,7 @@ const TourPackageDetails: React.FC<TourPackageDetailsProps> = ({ data, location,
     router.back();
   };
 
-
+  const location = await getLocation(data.locationId);
 
   return (
     <div className="min-h-screen flex flex-col sm:px-6 lg:px-40 py-10">
