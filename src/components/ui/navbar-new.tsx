@@ -3,14 +3,14 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { FaBars, FaTimes, FaUserCircle, FaGlobe, FaChevronDown } from 'react-icons/fa';
 import Image from 'next/image';
-import getLocations from '@/actions/get-locations';
+import getLocationsByStore from '@/actions/get-locationsbystore';
 import { Location } from '../../../types';
 import { Separator } from '@radix-ui/react-select';
 
 export default async function NavbarNew() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const locations = await getLocations({ storeId: "3eb7df82-57cc-4c68-aaeb-6b2531cd72d5" });
+  const locations = await getLocationsByStore({ storeId: "3eb7df82-57cc-4c68-aaeb-6b2531cd72d5" });
 
 
   const toggleMenu = () => setIsOpen(!isOpen);

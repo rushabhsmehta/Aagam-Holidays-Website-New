@@ -5,10 +5,11 @@ import getTourPackages from '@/actions/get-tourPackages';
 import Container from '@/components/ui/container';
 import NoResults from '@/components/ui/no-results';
 import TourPackageCard from '@/components/ui/tourPackage-card';
-import getLocations from '@/actions/get-locations';
-import getLocation from '@/actions/get-location';
+import getLocationById from '@/actions/get-locationbyid';
 import { Suspense } from 'react';
 import Loading from '@/app/loading';
+import getLocationsByStore from '@/actions/get-locationsbystore';
+
 
 
 interface TourPackagePageProps {
@@ -20,7 +21,7 @@ interface TourPackagePageProps {
 
 
 export async function generateStaticParams() {
-  const data = await getLocations({ storeId: "3eb7df82-57cc-4c68-aaeb-6b2531cd72d5" });
+  const data = await getLocationsByStore({ storeId: "3eb7df82-57cc-4c68-aaeb-6b2531cd72d5" });
   return data.map(item => ({
     locationId: item.id
   } // Ensure parameters match your dynamic route segments
@@ -29,7 +30,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params: { locationId } }: TourPackagePageProps) {
 
-  const location = await getLocation(locationId) //deduped!
+  const location = await getLocationById(locationId) //deduped!
 
   if (!location) {
     return {
@@ -46,10 +47,10 @@ const TourPackagePage: React.FC<TourPackagePageProps> = async ({
   params
 }) => {
   const tourPackages = await getTourPackages({ locationId: params.locationId });
+  const location = await getLocationById(params.locationId);
   //  const suggestedTourPackages = await getTourPackages({ 
   //    locationId: tourPackage?.locationId
   //  });
-  const location = await getLocation(params.locationId) //deduped!
 
   if (!tourPackages) {
     return null;
@@ -59,7 +60,7 @@ const TourPackagePage: React.FC<TourPackagePageProps> = async ({
     <div className="space-y-4 px-8 py-20">
       <h3 className="font-bold text-3xl">Tour Packages </h3>
       {tourPackages.length === 0 && <NoResults />}
-      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         <Suspense fallback={<Loading />}>
 
           {tourPackages.map((tourPackage) => (

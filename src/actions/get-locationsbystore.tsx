@@ -12,7 +12,7 @@ interface Query {
 storeId : string;
 }
 
-const getLocations = async (query: Query): Promise<Location[]> => {
+const getLocationsByStore = async (query: Query): Promise<Location[]> => {
   const url = qs.stringifyUrl({
     url: URL,
     query: { 
@@ -30,4 +30,4 @@ const getLocations = async (query: Query): Promise<Location[]> => {
   return res.json();
 };
 
-export default getLocations;
+export default getLocationsByStore;

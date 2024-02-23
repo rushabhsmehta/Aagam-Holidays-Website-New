@@ -1,5 +1,5 @@
 import getBillboard from "@/actions/get-billboard";
-import getLocations from "@/actions/get-locations";
+import getLocationsByStore from "@/actions/get-locationsbystore";
 import LocationList from "@/components/location-list";
 import Billboard from "@/components/ui/billboard";
 import Container from "@/components/ui/container";
@@ -21,7 +21,7 @@ const Home = async () => {
   // const tourPackageQueries = await getTourPackageQueries({ storeId : "3eb7df82-57cc-4c68-aaeb-6b2531cd72d5" });
 
   const billboard = await getBillboard("49ec26c8-24b0-4149-a342-63a0c7ce3da5");
-  const locations = await getLocations({ storeId: "3eb7df82-57cc-4c68-aaeb-6b2531cd72d5" });
+  const locations = await getLocationsByStore({ storeId: "3eb7df82-57cc-4c68-aaeb-6b2531cd72d5" });
 
   return (
     <Container>
