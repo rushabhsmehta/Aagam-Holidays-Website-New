@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { FaBars, FaTimes, FaUserCircle, FaGlobe } from 'react-icons/fa';
-
+import Image from 'next/image';
 export default function NavbarNew() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -16,7 +16,7 @@ export default function NavbarNew() {
             <div>
               {/* Website Logo */}
               <Link href="/" className="flex items-center py-1 px-2">
-                  <img src="/images/company-logo.png" alt="Logo" className="h-12 w-36 mr-2" />
+                  <Image src="/images/company-logo.png" alt="Logo" className="h-12 w-36 mr-2" height = {12} width= {36} />
                 
               </Link>
             </div>

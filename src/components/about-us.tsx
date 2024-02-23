@@ -1,5 +1,6 @@
-import Image from 'next/image';
-import React from 'react';
+
+import Image from "next/image";
+import React from "react";
 
 const AboutUs = () => {
     return (
@@ -14,16 +15,16 @@ const AboutUs = () => {
                     <div className="space-y-4 text-gray-600 leading-relaxed">
                         <p>
                             Embark on a journey with us, where dreams of perfect getaways turn into reality. At
-                            <span className="font-semibold text-indigo-600"> Aagam Holidays</span>, we weave the essence of discovery and joy into every unique travel itinerary we create. Born from a passion for exploration and a yearning to understand our planet's vast beauty, we've been your compass for navigating the world's most enchanting destinations since 2020.
+                            <span className="font-semibold text-indigo-600"> Aagam Holidays</span>, we weave the essence of discovery and joy into every unique travel itinerary we create. Born from a passion for exploration and a yearning to understand our planet&apos;s vast beauty, we&apos;ve been your compass for navigating the world&apos;s most enchanting destinations since 2020.
                         </p>
                         <p>
-                            Our story began with a simple but powerful belief: travel should be awe-inspiring, exhilarating, and, above all, personal. We're a team of seasoned voyagers, culture enthusiasts, and nature seekers who share a collective vision – to craft not just holidays, but holistic experiences. From the cobblestone streets of Europe to the azure waters of the Caribbean, our mission is to unfold the world's wonders to the curious and the brave.
+                            Our story began with a simple but powerful belief: travel should be awe-inspiring, exhilarating, and, above all, personal. We&apos;re a team of seasoned voyagers, culture enthusiasts, and nature seekers who share a collective vision – to craft not just holidays, but holistic experiences. From the cobblestone streets of Europe to the azure waters of the Caribbean, our mission is to unfold the world&apos;s wonders to the curious and the brave.
                         </p>
                         <p>
-                            What sets us apart is our commitment to personalized adventures. Whether you're seeking solitude on remote isles or the thrill of urban escapades, our bespoke itineraries are tailored to your rhythm. Sustainability isn't just a buzzword for us; it's a pledge to nurture the enchanting locales we visit, ensuring they remain vibrant for generations of travelers to come.
+                            What sets us apart is our commitment to personalized adventures. Whether you&apos;re seeking solitude on remote isles or the thrill of urban escapades, our bespoke itineraries are tailored to your rhythm. Sustainability isn&apos;t just a buzzword for us; it&apos;s a pledge to nurture the enchanting locales we visit, ensuring they remain vibrant for generations of travelers to come.
                         </p>
                         <p>
-                            Join us, as we chart a course to the extraordinary, curating journeys that transcend the traditional, and adventures that leave indelible marks on your soul. This isn't just any travel; this is
+                            Join us, as we chart a course to the extraordinary, curating journeys that transcend the traditional, and adventures that leave indelible marks on your soul. This isn&apos;t just any travel; this is
                             <span className="font-semibold text-indigo-600"> Aagam Holidays</span> – where every mile is a memory, and every destination a new chapter of your story.
                         </p>
                     </div>
@@ -47,7 +48,7 @@ const AboutUs = () => {
                                 <Image src="/images/mission-2.webp" alt="Unforgettable Journeys" width={100} height={100} />
                                 <h4 className="mt-4 text-lg font-semibold">Unforgettable Journeys</h4>
                                 <p className="text-center mt-2 text-gray-600">
-                                    Crafting memorable and unique travel experiences. Each trip is more than a vacation – it's a chance to gain a new perspective and create lifelong memories.
+                                    Crafting memorable and unique travel experiences. Each trip is more than a vacation – it&apos;s a chance to gain a new perspective and create lifelong memories.
                                 </p>
                             </div>
                             {/* Sustainable Travel */}

@@ -31,7 +31,7 @@ export default function HeroSectionNew() {
       {/* Content */}
       <div className="z-20">
         <h1 className="text-4xl md:text-6xl font-bold">Unleash Your Wanderlust</h1>
-        <p className="mt-4 text-xl md:text-2xl">Discover the world's most extraordinary places</p>
+        <p className="mt-4 text-xl md:text-2xl">Discover the most extraordinary places</p>
         
         {/* Search Form */}
         <form onSubmit={handleSearch} className="mt-8">
