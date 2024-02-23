@@ -5,7 +5,6 @@ import Loading from "@/app/loading";
 import { Suspense } from "react";
 import {  Hotel, TourPackage } from "../../../types";
 
-
 interface TourPackageDetailsProps {
   data: TourPackage;
   hotels: Hotel[];
