@@ -49,6 +49,7 @@ const TourPackagePage: React.FC<TourPackagePageProps> = async ({
   //  const suggestedTourPackages = await getTourPackages({ 
   //    locationId: tourPackage?.locationId
   //  });
+  const location = await getLocation(params.locationId) //deduped!
 
   if (!tourPackages) {
     return null;
@@ -62,7 +63,7 @@ const TourPackagePage: React.FC<TourPackagePageProps> = async ({
         <Suspense fallback={<Loading />}>
 
           {tourPackages.map((tourPackage) => (
-            <TourPackageCard key={tourPackage.id} data={tourPackage} />
+            <TourPackageCard key={tourPackage.id} location = {location} data={tourPackage} />
           ))}
         </Suspense>
 
