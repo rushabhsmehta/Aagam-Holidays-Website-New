@@ -62,7 +62,7 @@ const TourPackageCard: React.FC<TourPackageCard> = async ({
         <div className="flex items-center">
           <LucideStar className="text-sm text-yellow-400 ml-4 mb-1 mr-2" />
           <span className="text-sm text-yellow-400">5.0</span>
-          <span className="text-sm text-gray-500 ml-1">({data.tourPackageName})</span>
+          {/* <span className="text-sm text-gray-500 ml-1">({data.tourPackageName})</span> */}
         </div>
       </div>
 
