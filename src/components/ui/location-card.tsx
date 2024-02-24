@@ -1,17 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { MouseEventHandler } from "react";
-import { Expand, LucidePhone, LucideStar, Ratio, ShoppingCart, StarIcon, StarOff, StarsIcon } from "lucide-react";
+import {  LucidePhone, LucideStar } from "lucide-react";
 import { useRouter } from "next/navigation";
-
-import Currency from "@/components/ui/currency";
-import IconButton from "@/components/ui/icon-button";
-import usePreviewModal from "@/hooks/use-preview-modal";
-import useCart from "@/hooks/use-cart";
 import { Location } from "../../../types";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./card";
-import { FaStar, FaStarAndCrescent, FaStarOfLife } from "react-icons/fa";
 import { Button } from "./button";
 
 interface LocationCard {
