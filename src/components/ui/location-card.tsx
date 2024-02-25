@@ -1,10 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import {  LucidePhone, LucideStar } from "lucide-react";
+import { LucidePhone, LucideStar } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Location } from "../../../types";
 import { Button } from "./button";
+import Link from "next/link";
 
 interface LocationCard {
   data: Location
@@ -20,10 +21,11 @@ const LocationCard: React.FC<LocationCard> = ({
     const handleClick = () => {
       router.push(`/location/${data?.id}`);
     }; */
-
   const handleClick = () => {
     router.push(`/tourPackages/${data?.id}`);
   };
+
+
 
   /*  const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
      event.stopPropagation();

@@ -37,7 +37,10 @@ const AboutUs = () => {
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                             {/* Explore the World */}
                             <div className="flex flex-col items-center">
-                                <Image src="/images/mission-1.webp" alt="Explore the World" width={100} height={100} />
+                                <Image src="/images/mission-1.webp" alt="Explore the World"
+                                    width={100}
+                                    height={100}
+                                    className="object-cover object-center" />
                                 <h4 className="mt-4 text-lg font-semibold">Explore the World</h4>
                                 <p className="text-center mt-2 text-gray-600">
                                     Discover the most hidden gems across the globe. We believe in expanding your horizons and experiencing authenticity everywhere you go.
@@ -45,7 +48,10 @@ const AboutUs = () => {
                             </div>
                             {/* Unforgettable Journeys */}
                             <div className="flex flex-col items-center">
-                                <Image src="/images/mission-2.webp" alt="Unforgettable Journeys" width={100} height={100} />
+                                <Image src="/images/mission-2.webp" alt="Unforgettable Journeys"
+                                    width={100}
+                                    height={100}
+                                    className="object-cover object-center" />
                                 <h4 className="mt-4 text-lg font-semibold">Unforgettable Journeys</h4>
                                 <p className="text-center mt-2 text-gray-600">
                                     Crafting memorable and unique travel experiences. Each trip is more than a vacation – it&apos;s a chance to gain a new perspective and create lifelong memories.
@@ -53,7 +59,10 @@ const AboutUs = () => {
                             </div>
                             {/* Sustainable Travel */}
                             <div className="flex flex-col items-center">
-                                <Image src="/images/mission-3.webp" alt="Sustainable Travel" width={100} height={100} />
+                                <Image src="/images/mission-3.webp" alt="Sustainable Travel"
+                                    width={100}
+                                    height={100}
+                                    className="object-cover object-center" />
                                 <h4 className="mt-4 text-lg font-semibold">Sustainable Travel</h4>
                                 <p className="text-center mt-2 text-gray-600">
                                     Committed to responsible tourism. Travel with us means supporting local communities and preserving the natural beauty of destinations.
@@ -61,7 +70,10 @@ const AboutUs = () => {
                             </div>
                             {/* Exceptional Service */}
                             <div className="flex flex-col items-center">
-                                <Image src="/images/mission-3.webp" alt="Exceptional Service" width={100} height={100} />
+                                <Image src="/images/mission-3.webp" alt="Exceptional Service"
+                                    width={100}
+                                    height={100}
+                                    className="object-cover object-center" />
                                 <h4 className="mt-4 text-lg font-semibold">Exceptional Service</h4>
                                 <p className="text-center mt-2 text-gray-600">
                                     From the first call to the last flight home, our travel experts are there for you, ensuring your trip runs smoothly, safely, and stress-free.

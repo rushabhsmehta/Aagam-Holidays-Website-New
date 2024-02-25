@@ -9,7 +9,7 @@ import ContactUs from "@/components/contact-us";
 import Testimonials from "@/components/testimonials";
 
 
-const HomePage =    () => {
+const Home =    () => {
 
   // const products = await getProducts({ isFeatured: true });
   // const tourPackages = await getTourPackages({ storeId : "3eb7df82-57cc-4c68-aaeb-6b2531cd72d5" });
@@ -56,4 +56,4 @@ const HomePage =    () => {
   )
 };
 
-export default HomePage;
+export default Home;
