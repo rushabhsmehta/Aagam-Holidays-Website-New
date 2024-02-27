@@ -23,7 +23,7 @@ export default function HeroSection() {
   return (
     <div
       className={
-        `${styles.heroBackground} h-screen flex flex-col justify-center text-white text-center relative overflow-x-hidden`
+        `${styles.heroBackground} h-screen flex flex-col justify-center text-white text-center relative overflow-x-hidden pl-0`
       }
     >
       <div className="absolute top-0 left-0 w-full h-full bg-black opacity-30"></div>

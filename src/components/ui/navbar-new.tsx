@@ -17,7 +17,7 @@ export default async function NavbarNew() {
 
   return (
     <nav className="bg-white shadow-lg fixed w-full z-50">
-      <div className="max-w-6xl mx-auto px-4">  
+      <div className="max-w-6xl mx-auto px-4">
         <div className="flex justify-between">
           <div className="flex space-x-7">
             <div>
@@ -35,7 +35,7 @@ export default async function NavbarNew() {
                 <div className="absolute top-full hidden group-hover:block bg-white shadow-lg py-2">
                   <div className="w-80 grid grid-cols-2 gap-x-2">
                     <ul className="space-y-1">
-                      {locations.slice(0, 5).map((location, index) => (
+                      {locations.map((location, index) => (
                         <li key={index} className="truncate">
                           <Link href={`/tourPackages/${location.id}`} className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-500 hover:text-white transition duration-300">
                             {location.label}
@@ -43,22 +43,12 @@ export default async function NavbarNew() {
                         </li>
                       ))}
                     </ul>
-                    {locations.length > 5 && (
-                      <ul className="space-y-1">
-                        {locations.slice(5, 10).map((location, index) => ( // Adjust the second slice to limit the number of items in the second column
-                          <li key={index} className="truncate">
-                            <Link href={`/tourPackages/${location.id}`} className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-500 hover:text-white transition duration-300">
-                              {location.label}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
+
                   </div>
                 </div>
               </div>
-              <Link href="#about-us" className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">About Us</Link>
-              <Link href="#contact-us" className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Contact</Link>
+              <Link href="/#about-us" className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">About Us</Link>
+              <Link href="/#contact-us" className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Contact</Link>
             </div>
           </div>
           {/* Secondary Navbar Items */}

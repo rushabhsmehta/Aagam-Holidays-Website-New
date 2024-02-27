@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { Location, TourPackage } from "../../../types";
 import { LucidePhone, LucideStar } from "lucide-react";
 import { Button } from "./button";
+import Link from "next/link";
 
 interface TourPackageCard {
   data: TourPackage;
@@ -38,9 +39,10 @@ const TourPackageCard: React.FC<TourPackageCard> =  ({
 
   return (
     <div
-      onClick={handleClick}
+   //   onClick={handleClick}
       className="cursor-pointer border-2 border-blaack-500 rounded-md p-3 hover:border-black-600 hover:shadow-lg transform transition duration-200 ease-in-out hover:-translate-y-1 hover:scale-105"
     >
+    <Link href={`/tourPackage/${data?.id}`}>
 
       <Image
         className="rounded"
@@ -90,6 +92,7 @@ const TourPackageCard: React.FC<TourPackageCard> =  ({
           Request Callback
         </Button>
       </div>
+      </Link>
     </div>
   );
 }
