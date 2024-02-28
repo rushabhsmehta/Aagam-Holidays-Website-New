@@ -16,7 +16,8 @@ export default async function NavbarNew() {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <nav className="bg-white shadow-lg fixed w-full z-50">
+
+    <nav className="bg-white shadow-lg w-full z-50">
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex justify-between">
           <div className="flex space-x-7">

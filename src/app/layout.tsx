@@ -6,6 +6,9 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter, Urbanist } from 'next/font/google'
 import NavbarNew from '@/components/ui/navbar-new'
+import NavbarLocations from '@/components/ui/navbar-locations'
+import { SeparatorHorizontal } from 'lucide-react'
+import { Separator } from '@/components/ui/separator'
 
 const font = Urbanist({ subsets: ['latin'] })
 
@@ -24,14 +27,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       {/* <body className={font.className}> */}
-        {/* <ToastProvider />
+      {/* <ToastProvider />
 
         <ModalProvider /> */}
-        <NavbarNew/>  
-              {children}
-        {/* <Analytics /> */}
-        <ScrollToTop/>
-        <Footer />
+
+      <NavbarNew />
+      <Separator />
+      <NavbarLocations />
+
+      {children}
+      {/* <Analytics /> */}
+      <ScrollToTop />
+      <Footer />
       {/* </body> */}
     </html>
   )
