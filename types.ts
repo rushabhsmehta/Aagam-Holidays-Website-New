@@ -126,6 +126,7 @@ export interface Location {
  // size: Size;
  // color: Color;
   images: Images[]
+  slug : string;
 };
 
 

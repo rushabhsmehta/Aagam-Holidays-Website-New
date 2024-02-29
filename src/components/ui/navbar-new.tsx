@@ -56,7 +56,7 @@ export default async function NavbarNew() {
           <div className="hidden md:flex items-center space-x-3">
             <Link href="/login" className="py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300"><FaUserCircle /></Link>
             <Link href="/languages" className="py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300"><FaGlobe /></Link>
-            <Link href="/book" className="py-2 px-2 font-medium text-white bg-green-500 rounded hover:bg-green-400 transition duration-300">Book Now</Link>
+            <Link href="/book" className="py-2 px-2 font-medium text-white bg-gradient-to-r from-orange-500 to-red-500 rounded hover:bg-green-400 transition duration-300">Book Now</Link>
           </div>
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
