@@ -40,7 +40,7 @@ const TourPackageCard: React.FC<TourPackageCard> =  ({
   return (
     <div
    //   onClick={handleClick}
-      className="cursor-pointer border-2 border-blaack-500 rounded-md p-3 hover:border-black-600 hover:shadow-lg transform transition duration-200 ease-in-out hover:-translate-y-1 hover:scale-105"
+      className="cursor-pointer rounded-md hover:border-black-600 hover:shadow-lg transform transition duration-200 ease-in-out hover:-translate-y-1 hover:scale-105"
     >
     <Link href={`/tourPackage/${data?.id}`}>
 
@@ -59,7 +59,7 @@ const TourPackageCard: React.FC<TourPackageCard> =  ({
       />
 
       {/* Top section with label, star icon, and rating */}
-      <div className="flex justify-between items-center m-4">
+      <div className="flex justify-between items-center mt-2">
         <span className="text-sm font-semibold text-gray-700">{location.label }</span>
         <div className="flex items-center">
           <LucideStar className="text-sm text-yellow-400 ml-4 mb-1 mr-2" />
@@ -69,22 +69,22 @@ const TourPackageCard: React.FC<TourPackageCard> =  ({
       </div>
 
       {/* Middle section with package title */}
-      <div className="text-lg font-bold text-gray-800 ml-4 mb-1">{data.tourPackageName}</div>
+      <div className="text-sm font-bold text-gray-800 mb-1">{data.tourPackageName}</div>
 
       {/* Sale badge */}
-      <div className="bg-gradient-to-r from-red-500 to-red-700 text-white text-xs font-bold uppercase px-2 py-1 inline-block rounded ml-4 mb-1">
+      <div className="bg-gradient-to-r from-red-500 to-red-700 text-white text-xs font-bold uppercase px-2 py-1 inline-block rounded mb-1">
         {data.tourPackageName}
       </div>
 
       {/* Pricing section */}
       <div className="flex items-baseline mb-4">
         <span className="text-gray-500 line-through ml-4 mb-1">{data.price}</span>
-        <span className="text-lg font-bold text-red-600 ml-4 mb-1">{data.price}</span>
+        <span className="text-sm font-bold text-red-600 ml-4 mb-1">{data.price}</span>
       </div>
 
 
       {/* Action buttons */}
-      <div className="flex justify-between gap-2 ml-4 mb-4">
+      <div className="flex justify-between gap-2 mb-4">
         <Button variant="outline" className="border border-green-500 hover:border-green-600" >
           <LucidePhone className="mr-2" /> Call Now
         </Button>

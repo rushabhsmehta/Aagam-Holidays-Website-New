@@ -1,4 +1,4 @@
-
+'use client';
 import LocationList from "@/components/location-list";
 import Container from "@/components/ui/container";
 import { Suspense } from "react";
@@ -24,7 +24,7 @@ const Home =    () => {
         <Suspense fallback={<Loading />}>
 
           <HeroSectionNew />
-          {/*    <div className="flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8">
+                    {/*    <div className="flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8">
           <ProductList title="Featured Products" items={products} />
         </div>
  */}

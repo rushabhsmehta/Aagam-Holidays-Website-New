@@ -33,7 +33,7 @@ export default function RootLayout({
 
       <NavbarNew />
       <Separator />
-      <NavbarLocations />
+      {/* <NavbarLocations /> */}
 
       {children}
       {/* <Analytics /> */}
