@@ -1,4 +1,8 @@
 import * as React from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+
 import LocationCard from "@/components/ui/location-card";
 import { Location } from "../../types";
 import NoResults from "@/components/ui/no-results";
@@ -26,6 +30,14 @@ const LocationList: React.FC<LocationListProps> = async ({ title }) => {
   const tourPackages = await Promise.all(items.map(async (item) => {
     return await getTourPackages({ locationId: item.id });
   }));
+
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1
+  };
 
   if (items.length === 0) return <NoResults />;
 
