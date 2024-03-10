@@ -6,7 +6,6 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter, Urbanist } from 'next/font/google'
 import NavbarNew from '@/components/ui/navbar-new'
-import NavbarLocations from '@/components/ui/navbar-locations'
 import { SeparatorHorizontal } from 'lucide-react'
 import { Separator } from '@/components/ui/separator'
 
@@ -33,7 +32,6 @@ export default function RootLayout({
 
       <NavbarNew />
       <Separator />
-      {/* <NavbarLocations /> */}
 
       {children}
       {/* <Analytics /> */}
