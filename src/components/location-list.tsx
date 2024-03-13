@@ -31,13 +31,7 @@ const LocationList: React.FC<LocationListProps> = async ({ title }) => {
     return await getTourPackages({ locationId: item.id });
   }));
 
-  var settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1
-  };
+
 
   if (items.length === 0) return <NoResults />;
 

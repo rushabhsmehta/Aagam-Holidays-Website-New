@@ -5,9 +5,9 @@ import ToastProvider from '@/providers/toast-provider'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter, Urbanist } from 'next/font/google'
-import NavbarNew from '@/components/ui/navbar-new'
 import { SeparatorHorizontal } from 'lucide-react'
 import { Separator } from '@/components/ui/separator'
+import NavbarNew from '@/components/ui/navbarnew'
 
 const font = Urbanist({ subsets: ['latin'] })
 
@@ -30,7 +30,7 @@ export default function RootLayout({
 
         <ModalProvider /> */}
 
-      <NavbarNew />
+      <NavbarNew/>
       <Separator />
 
       {children}

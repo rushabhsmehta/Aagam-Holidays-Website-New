@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { FaBars, FaTimes, FaUserCircle, FaGlobe, FaChevronDown } from 'react-icons/fa';
@@ -7,11 +7,12 @@ import getLocationsByStore from '@/actions/get-locationsbystore';
 import { Location } from '../../../types';
 import { Separator } from '@radix-ui/react-select';
 
-export default async function NavbarNew() {
+interface NavbarNewProps {
+  locations: Location[];
+}
+
+export default function NavbarNewRender ({ locations }: NavbarNewProps) {
   const [isOpen, setIsOpen] = useState(false);
-
-  const locations = await getLocationsByStore({ storeId: "3eb7df82-57cc-4c68-aaeb-6b2531cd72d5" });
-
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -22,7 +23,7 @@ export default async function NavbarNew() {
         <div className="flex justify-between">
           <div className="flex space-x-7">
             <div>
-              {/* Website Logo */}
+              {/* Website Logo */} 
               <Link href="/" className="flex items-center py-1 px-2">
                 <Image src="/images/company-logo.png" alt="Logo" className="h-12 w-36 mr-2" height={120} width={360} />
               </Link>
@@ -60,13 +61,13 @@ export default async function NavbarNew() {
           </div>
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
-            <button className="outline-none mobile-menu-button" onClick={toggleMenu}>
+                <button className="outline-none mobile-menu-button" onClick={toggleMenu}>
               {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-            </button>
+            </button> 
           </div>
         </div>
       </div >
-      {/* Mobile Menu */}
+
       < div className={`md:hidden ${isOpen ? 'block' : 'hidden'}`
       }>
         <ul>
