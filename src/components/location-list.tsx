@@ -1,38 +1,17 @@
+// LocationList.client.tsx
 import * as React from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css"; 
-import "slick-carousel/slick/slick-theme.css";
-
-import LocationCard from "@/components/ui/location-card";
-import { Location } from "../../types";
+import { Location, TourPackage } from "../../types";
 import NoResults from "@/components/ui/no-results";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import getLocationsByStore from "@/actions/get-locationsbystore";
-import Link from "next/link";
 import TourPackageCard from "./ui/tourPackage-card";
-import getTourPackages from "@/actions/get-tourPackages";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel";
 
 interface LocationListProps {
   title: string;
+  items: Location[];
+  tourPackages: any[];
 }
 
-const LocationList: React.FC<LocationListProps> = async ({ title }) => {
-
-  const items = await getLocationsByStore({ storeId: "3eb7df82-57cc-4c68-aaeb-6b2531cd72d5" });
-
-  //fetch TourPackage based on each location item
-  const tourPackages = await Promise.all(items.map(async (item) => {
-    return await getTourPackages({ locationId: item.id });
-  }));
-
-
-
+const LocationListClient: React.FC<LocationListProps> = ({ title, items, tourPackages }) => {
   if (items.length === 0) return <NoResults />;
 
   return (
@@ -44,17 +23,28 @@ const LocationList: React.FC<LocationListProps> = async ({ title }) => {
             <h2 className="font-bold text-2xl mb-4">{item.label}</h2>
           )}
 
-          <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-            {tourPackages[index].map(tourPackage => (
-              <div key={tourPackage.id} style={{ flexBasis: 'calc(33% - 20px)', margin: '10px' }}>
-                <TourPackageCard location={item} data={tourPackage} />
-              </div>
-            ))}
-          </div>
+          <Carousel
+            opts={{
+              align: "start",
+            }}
+            className="w-full"
+          >
+            <CarouselContent>
+              {tourPackages[index].map((tourPackage: TourPackage, idx: number) => (
+                <CarouselItem key={idx} className="md:basis-1/2 lg:basis-1/3">
+                  <div className="p-1">
+                    <TourPackageCard location={item} data={tourPackage} />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
         </div>
       ))}
     </div>
   );
 }
 
-export default LocationList;
+export default LocationListClient;

@@ -1,11 +1,9 @@
 'use client';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { FaBars, FaTimes, FaUserCircle, FaGlobe, FaChevronDown } from 'react-icons/fa';
 import Image from 'next/image';
-import getLocationsByStore from '@/actions/get-locationsbystore';
 import { Location } from '../../../types';
-import { Separator } from '@radix-ui/react-select';
 
 interface NavbarNewProps {
   locations: Location[];

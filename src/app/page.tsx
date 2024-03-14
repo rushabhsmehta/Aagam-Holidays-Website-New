@@ -7,6 +7,7 @@ import HeroSectionNew from "@/components/ui/hero-section-new";
 import AboutUs from "@/components/about-us";
 import ContactUs from "@/components/contact-us";
 import Testimonials from "@/components/testimonials";
+import LocationListServer from "@/components/location-list-server";
 
 
 const Home =    () => {
@@ -33,7 +34,7 @@ const Home =    () => {
         </div>
  */}
           <div className="flex flex-col gap-y-8 pb-10 px-4 sm:px-6 lg:px-8">
-            <LocationList title="Tour Packages" />
+            <LocationListServer title="Tour Packages"/>
           </div>
 
 
