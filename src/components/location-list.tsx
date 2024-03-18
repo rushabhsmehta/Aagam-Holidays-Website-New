@@ -3,7 +3,6 @@ import * as React from "react";
 import { Location, TourPackage } from "../../types";
 import NoResults from "@/components/ui/no-results";
 import TourPackageCard from "./ui/tourPackage-card";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel";
 
 interface LocationListProps {
   title: string;
@@ -23,24 +22,13 @@ const LocationListClient: React.FC<LocationListProps> = ({ title, items, tourPac
             <h2 className="font-bold text-2xl mb-4">{item.label}</h2>
           )}
 
-          <Carousel
-            opts={{
-              align: "start",
-            }}
-            className="w-full"
-          >
-            <CarouselContent>
-              {tourPackages[index].map((tourPackage: TourPackage, idx: number) => (
-                <CarouselItem key={idx} className="md:basis-1/2 lg:basis-1/3">
-                  <div className="p-1">
-                    <TourPackageCard location={item} data={tourPackage} />
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
+          <div className="w-full flex flex-wrap justify-start items-start">
+            {tourPackages[index].map((tourPackage: TourPackage, idx: number) => (
+              <div key={idx} className="w-full md:w-1/2 lg:w-1/3 p-4">
+                <TourPackageCard location={item} data={tourPackage} />
+              </div>
+            ))}
+          </div>
         </div>
       ))}
     </div>
