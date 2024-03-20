@@ -1,4 +1,3 @@
-'use client';
 import LocationList from "@/components/location-list";
 import Container from "@/components/ui/container";
 import { Suspense } from "react";
