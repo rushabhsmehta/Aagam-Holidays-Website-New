@@ -30,7 +30,7 @@ export default function Send_Message() {
             }
         }
     };
-    fetchData();
+//    fetchData();
     return (
         <div>
             <h1>Send Message</h1>
