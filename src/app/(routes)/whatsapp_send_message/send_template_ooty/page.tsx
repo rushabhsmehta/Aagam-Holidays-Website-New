@@ -29,12 +29,13 @@ export default function Send_Message() {
                 console.error('Error sending WhatsApp message:', error);
             }
         }
+        window.close();
     };
-//    fetchData();
-    return (
+   fetchData();
+   /*  return (
         <div>
             <h1>Send Message</h1>
             <Button className = "mt-40 ml-20 mb-20" onClick={fetchData}>Send Message</Button>
         </div>
-    );
+    ); */
 }
