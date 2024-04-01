@@ -25,16 +25,19 @@ export default function Send_Message() {
             try {
                 const response = await axios.post(`${baseUrl}?${params.toString()}`);
                 console.log(response.data);
+                alert('Message has been sent');
+
             } catch (error) {
                 console.error('Error sending WhatsApp message:', error);
             }
         }
+        window.close();
     };
-//    fetchData();
-    return (
+   fetchData();
+   /*  return (
         <div>
             <h1>Send Message</h1>
             <Button className = "mt-40 ml-20 mb-20" onClick={fetchData}>Send Message</Button>
         </div>
-    );
+    ); */
 }
