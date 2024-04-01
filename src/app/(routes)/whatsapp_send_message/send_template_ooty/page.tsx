@@ -1,4 +1,4 @@
-'use client'
+//'use client'
 import react from 'react';  
 import axios from "axios";
 import { Button } from "@/components/ui/button";
@@ -25,13 +25,13 @@ export default function Send_Message() {
             try {
                 const response = await axios.post(`${baseUrl}?${params.toString()}`);
                 console.log(response.data);
-                alert('Message has been sent');
+             //   alert('Message has been sent');
 
             } catch (error) {
                 console.error('Error sending WhatsApp message:', error);
             }
         }
-        window.close();
+       // window.close();
     };
    fetchData();
    /*  return (

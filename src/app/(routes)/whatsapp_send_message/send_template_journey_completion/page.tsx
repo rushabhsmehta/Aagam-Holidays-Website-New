@@ -1,4 +1,4 @@
-'use client'
+// 'use client'
 import react from 'react';  
 import axios from "axios";
 import { Button } from "@/components/ui/button";
@@ -30,11 +30,11 @@ export default function Send_Message() {
             }
         }
     };
-//    fetchData();
-    return (
+   fetchData();
+   /*  return (
         <div>
             <h1>Send Message</h1>
             <Button className = "mt-40 ml-20 mb-20" onClick={fetchData}>Send Message</Button>
         </div>
-    );
+    ); */
 }
