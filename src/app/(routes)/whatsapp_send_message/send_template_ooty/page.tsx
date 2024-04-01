@@ -25,6 +25,8 @@ export default function Send_Message() {
             try {
                 const response = await axios.post(`${baseUrl}?${params.toString()}`);
                 console.log(response.data);
+                alert('Message has been sent');
+
             } catch (error) {
                 console.error('Error sending WhatsApp message:', error);
             }
