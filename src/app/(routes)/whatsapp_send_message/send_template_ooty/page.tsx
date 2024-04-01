@@ -14,10 +14,10 @@ export default function Send_Message() {
             const params = new URLSearchParams({
                 user_name: 'Aagam8788',
                 password: 'dhmag@9f',
-                template_name: 'message_for_mysore',
+                template_name: 'message_for_ooty',
                 number: number,
                 media_type: 'image',
-                media_link: 'aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xNlZvbkhCRGZKNVJmX0FkbWVDaU9seGFlREJYRGp1amwvdmlldz91c3A9c2hhcmluZw==',
+                media_link: 'aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xUl9xM3ctQ0RlVHU0aFN1dlY4dnJPY3RHeS1DX1NsaEsvdmlldz91c3A9c2hhcmluZw==',
                 variable: 'hi,aagamholidays',
                 header_variable: 'hi,hello'
             });
