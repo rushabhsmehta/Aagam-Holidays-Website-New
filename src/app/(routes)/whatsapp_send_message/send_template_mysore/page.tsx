@@ -25,13 +25,15 @@ export default function Send_Message() {
             try {
                 const response = await axios.post(`${baseUrl}?${params.toString()}`);
                 console.log(response.data);
-              //  alert('Message has been sent');
+                //  alert('Message has been sent');
 
+                // Wait for 1 second before the next request
+                await new Promise(resolve => setTimeout(resolve, 1000));
             } catch (error) {
                 console.error('Error sending WhatsApp message:', error);
             }
         }
-      //  window.close();
+        //  window.close();
     };
   // fetchData();
    return (
