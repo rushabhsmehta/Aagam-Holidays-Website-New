@@ -8,8 +8,8 @@ module.exports = {
     async rewrites() {
         return [
             {
-                source: '/api/:path*',
-                destination: 'https://send2.digital/whatsapp/:path*',
+                source: '/whatsapp_send_message/',
+                destination: 'https://send2.digital/whatsapp/api/',
             },
         ]
     }
