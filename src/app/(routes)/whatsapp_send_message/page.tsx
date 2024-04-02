@@ -14,10 +14,10 @@ export default function Send_Message() {
             const params = new URLSearchParams({
                 user_name: 'Aagam8788',
                 password: 'dhmag@9f',
-                template_name: 'kashmir_chardham_marketing',
+                template_name: 'message_for_mysore',
                 number: number,
                 media_type: 'image',
-                media_link: 'aHR0cHM6Ly9hYWdhbWhvbGlkYXlzLmNvbS9fbmV4dC9pbWFnZT91cmw9JTJGaW1hZ2VzJTJGa2FzaG1pciUyRmd0MjE5LmpwZyZ3PTEwODAmcT03NQ==',
+                media_link: 'aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xNlZvbkhCRGZKNVJmX0FkbWVDaU9seGFlREJYRGp1amwvdmlldz91c3A9c2hhcmluZw==',
                 variable: 'hi,aagamholidays',
                 header_variable: 'hi,hello'
             });
