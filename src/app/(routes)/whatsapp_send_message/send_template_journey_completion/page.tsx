@@ -17,7 +17,7 @@ export default function Send_Message() {
                 template_name: 'message_journey_completion',
                 number: number,
                 media_type: 'image',
-                media_link: 'aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xcElLTHR1eWMtVkFuRTJxYzFMaE5qWnVFRVZlVHBaLVcvdmlldz91c3A9c2hhcmluZw==',
+                media_link: 'aHR0cHM6Ly9hYWdhbS1ob2xpZGF5cy13ZWJzaXRlLW5ldy52ZXJjZWwuYXBwL2ltYWdlcy90ZW1wbGF0ZV9pbWFnZXMvZ29vZF9ieWUuanBn',
                 variable: 'hi,aagamholidays',
                 header_variable: 'hi,hello'
             });

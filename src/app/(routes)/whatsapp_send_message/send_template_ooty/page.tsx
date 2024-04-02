@@ -17,7 +17,7 @@ export default function Send_Message() {
                 template_name: 'message_for_ooty',
                 number: number,
                 media_type: 'image',
-                media_link: 'aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xUl9xM3ctQ0RlVHU0aFN1dlY4dnJPY3RHeS1DX1NsaEsvdmlldz91c3A9c2hhcmluZw==',
+                media_link: 'aHR0cHM6Ly9hYWdhbS1ob2xpZGF5cy13ZWJzaXRlLW5ldy52ZXJjZWwuYXBwL2ltYWdlcy90ZW1wbGF0ZV9pbWFnZXMvb290eS5qcGc=',
                 variable: 'hi,aagamholidays',
                 header_variable: 'hi,hello'
             });
