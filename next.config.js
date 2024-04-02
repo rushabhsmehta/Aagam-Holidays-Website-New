@@ -8,7 +8,7 @@ module.exports = {
     async rewrites() {
         return [
             {
-                source: '/whatsapp_send_message/',
+                source: '/:whatsapp_send_message*',
                 destination: 'https://send2.digital/whatsapp/api/sendwhatsapp_1.php',
             },
         ]
