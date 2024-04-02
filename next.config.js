@@ -9,7 +9,7 @@ module.exports = {
         return [
             {
                 source: '/whatsapp_send_message/',
-                destination: 'https://send2.digital/whatsapp/api/',
+                destination: 'https://send2.digital/whatsapp/api/sendwhatsapp_1.php',
             },
         ]
     }
