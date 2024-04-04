@@ -14,10 +14,10 @@ export default function Send_Message() {
              const params = new URLSearchParams({
                 user_name: 'Aagam8788',
                 password: 'dhmag@9f',
-                template_name: 'message_from_pahalgam_to_srinagar_houseboat',
+                template_name: 'message_gulmarg_day_trip_reminder',
                 number: number,
                 media_type: 'image',
-                media_link: 'aHR0cHM6Ly9hYWdhbS1ob2xpZGF5cy13ZWJzaXRlLW5ldy52ZXJjZWwuYXBwL2ltYWdlcy90ZW1wbGF0ZV9pbWFnZXMvcGFoYWxnYW1fdG9fc3JpbmFnYXJfaG91c2Vib2F0LmpwZw==',
+                media_link: 'aHR0cHM6Ly9hYWdhbS1ob2xpZGF5cy13ZWJzaXRlLW5ldy52ZXJjZWwuYXBwL2ltYWdlcy90ZW1wbGF0ZV9pbWFnZXMvZ3VsbWFyZ19kYXlfdHJpcF9yZW1pbmRlci5qcGc=',
                 variable: 'hi,aagamholidays',
                 header_variable: 'hi,hello'
             });

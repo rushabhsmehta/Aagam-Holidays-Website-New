@@ -8,16 +8,16 @@ export default function Send_Message() {
     const fetchData = async () => {
        console.log('fetchData called');
         const baseUrl = 'https://send2.digital/whatsapp/api/sendwhatsapp_1.php';
-        const numbers = ['919724444701', '919978783238']; // Add more numbers as needed
+        const numbers = ['918980413633', '919824218518', '919724444701', '919978783238']; // Add more numbers as needed
 
         for (const number of numbers) {
              const params = new URLSearchParams({
                 user_name: 'Aagam8788',
                 password: 'dhmag@9f',
-                template_name: 'message_from_pahalgam_to_srinagar_houseboat',
+                template_name: 'message_exciting_pahalgam_adventure_awaits',
                 number: number,
                 media_type: 'image',
-                media_link: 'aHR0cHM6Ly9hYWdhbS1ob2xpZGF5cy13ZWJzaXRlLW5ldy52ZXJjZWwuYXBwL2ltYWdlcy90ZW1wbGF0ZV9pbWFnZXMvcGFoYWxnYW1fdG9fc3JpbmFnYXJfaG91c2Vib2F0LmpwZw==',
+                media_link: 'aHR0cHM6Ly9hYWdhbS1ob2xpZGF5cy13ZWJzaXRlLW5ldy52ZXJjZWwuYXBwL2ltYWdlcy90ZW1wbGF0ZV9pbWFnZXMvZXhjaXRpbmdfcGFoYWxnYW1fYWR2ZW50dXJlX2F3YWl0cy5qcGc=',
                 variable: 'hi,aagamholidays',
                 header_variable: 'hi,hello'
             });
