@@ -17,7 +17,7 @@ export default function Send_Message() {
                 template_name: 'message_srinagar_to_pahalgam_day_trip',
                 number: number,
                 media_type: 'image',
-                media_link: 'aHR0cHM6Ly9hYWdhbS1ob2xpZGF5cy13ZWJzaXRlLW5ldy52ZXJjZWwuYXBwL2ltYWdlcy90ZW1wbGF0ZV9pbWFnZXMvc3JpbmFnYXJfdG9fcGFoYWxnYW1fZGF5X3RyaXAuanBn',
+                media_link: 'aHR0cHM6Ly9hYWdhbS1ob2xpZGF5cy13ZWJzaXRlLW5ldy52ZXJjZWwuYXBwL2ltYWdlcy90ZW1wbGF0ZV9pbWFnZXMvbXlzb3JlLmpwZw',
                 variable: 'hi,aagamholidays',
                 header_variable: 'hi,hello'
             });
