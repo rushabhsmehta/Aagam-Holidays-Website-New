@@ -23,7 +23,7 @@ export default function Send_Message() {
             });
 
             try {
-                'use server'
+              //  'use server'
                 const response = await axios.post(`${baseUrl}?${params.toString()}`);
                 console.log(response.data);
             } catch (error) {
