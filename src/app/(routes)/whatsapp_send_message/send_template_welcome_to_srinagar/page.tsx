@@ -9,7 +9,7 @@ export default function Send_Message() {
 
     const fetchData = async () => {
         setIsSending(true);
-        const numbers = ['919978783238']; // Add more numbers as needed
+        const numbers = ['919724444701','919429550582','917780927646','917006424669','919978783238','916005077187','918980977858']; // Add more numbers as needed
 
         for (const number of numbers) {
             try {
