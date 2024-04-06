@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react';  
+import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import sendWhatsAppMessage from '@/api/sent_whatsapp_message';
 
@@ -24,9 +24,6 @@ export default function Send_Message() {
                     'hi,hello'
                 );
                 setIsSent(true);
-                alert('Message sent successfully');
-                window.close();
-
             } catch (error) {
                 console.error('Error sending WhatsApp message:', error);
             } finally {
@@ -35,12 +32,16 @@ export default function Send_Message() {
         }
     };
 
+    if (isSent) {
+        alert('Message sent successfully');
+    }
+
     return (
         <div>
             <h1>Send Message</h1>
-            <Button className="mt-40 ml-20 mb-20" onClick={fetchData} disabled={isSending}>
+            <Button className="mt-40 ml-20 mb-20" onClick={fetchData} disabled={isSending || isSent}>
                 Send Message
             </Button>
         </div>
-    ); 
+    );
 }
