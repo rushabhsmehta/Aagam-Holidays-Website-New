@@ -10,7 +10,7 @@ export default function Send_Message() {
     const fetchData = async () => {
         setIsSending(true);
         const baseUrl = 'https://send2.digital/whatsapp/api/sendwhatsapp_1.php';
-        const numbers = ['919724444701', '919978783238']; // Add more numbers as needed
+        const numbers = ['919978783238']; // Add more numbers as needed
 
         for (const number of numbers) {
             const params = new URLSearchParams({
