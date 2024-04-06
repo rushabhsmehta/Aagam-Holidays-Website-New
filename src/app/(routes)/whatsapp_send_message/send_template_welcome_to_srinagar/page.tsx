@@ -24,6 +24,9 @@ export default function Send_Message() {
                     'hi,hello'
                 );
                 setIsSent(true);
+                alert('Message sent successfully');
+                window.close();
+
             } catch (error) {
                 console.error('Error sending WhatsApp message:', error);
             } finally {
@@ -31,11 +34,6 @@ export default function Send_Message() {
             }
         }
     };
-
-    if (isSent) {
-        alert('Message sent successfully');
-        window.close();
-    }
 
     return (
         <div>
