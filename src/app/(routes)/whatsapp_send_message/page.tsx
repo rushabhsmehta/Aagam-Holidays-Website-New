@@ -1,45 +1,57 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useState } from 'react';  
 import { Button } from "@/components/ui/button";
-import { send_message } from '@/lib/send_message';
-import { useRouter } from 'next/navigation';
+import sendWhatsAppMessage from '@/api/sent_whatsapp_message';
 
-export default function Send_Whatsapp_Message() {
-
-    const [message, setMessage] = useState('');
+export default function Send_Message() {
     const [isSending, setIsSending] = useState(false);
-    const router = useRouter();
-    const handleOnClick = async () => {
+    const [isSent, setIsSent] = useState(false);
+
+    const fetchData = async () => {
+        console.log('fetchData called');
         setIsSending(true);
-        try {
-            const result = await send_message(
-                'Aagam8788',
-                'dhmag9f',
-                'message_journey_completion',
-                ['919978783238'],
-                'image',
-                'aHR0cHM6Ly9hYWdhbS1ob2xpZGF5cy13ZWJzaXRlLW5ldy52jZWwuYXBwL2ltYWdlcy90ZW1wbGF0ZV9pbWFnZXMvbXlzb3JlLmpwZw==',
-                'hi,aagamholidays',
-                'hi,hello'
-            ) as string; // Add type assertion here
-            setMessage(result);
-        } catch (error) {
-            setMessage(`Error: ${(error as Error).message}`);
-        } finally {
-            setIsSending(false);
+        const numbers = [
+            '919724444701',
+            '919978783238',
+            '917006424669',
+            '919408969463',
+            '917780927646',
+            '917006093419',
+            '917600076980',
+            '919426415646',
+            '917874547973']; // Add more numbers as needed
+
+        for (const number of numbers) {
+            try {
+                await sendWhatsAppMessage(
+                    'Aagam8788',
+                    'dhmag@9f',
+                    'welcome_to_pahalgam',
+                    number,
+                    'image',
+                    'aHR0cHM6Ly9hYWdhbS1ob2xpZGF5cy13ZWJzaXRlLW5ldy52ZXJjZWwuYXBwL2ltYWdlcy90ZW1wbGF0ZV9pbWFnZXMvZXhjaXRpbmdfcGFoYWxnYW1fYWR2ZW50dXJlX2F3YWl0cy5qcGc=',
+                    'hi,aagamholidays',
+                    'hi,hello'
+                );
+                setIsSent(true);
+            } catch (error) {
+                console.error('Error sending WhatsApp message:', error);
+            } finally {
+                setIsSending(false);
+            }
         }
     };
+
+    if (isSent) {
+        alert('Message sent successfully');
+    }
 
     return (
         <div>
             <h1>Send Message</h1>
-            <Button className='mt-40 ml-20 mb-20'
-                onClick={handleOnClick}
-                disabled={isSending}
-            >
+            <Button className="mt-40 ml-20 mb-20" onClick={fetchData} disabled={isSending || isSent}>
                 Send Message
             </Button>
-            {message && <p>{message}</p>}
         </div>
-    );
+    ); 
 }
