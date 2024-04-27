@@ -86,8 +86,10 @@ const LocationCard: React.FC<LocationCard> = ({
 
       {/* Action buttons */}
       <div className="flex justify-between gap-2 ml-4 mb-4">
-        <Button variant="outline" className="border border-green-500 hover:border-green-600" >
-          <LucidePhone className="mr-2" /> Call Now
+        <Button variant="outline" className="border border-green-500 hover:border-green-600">
+          <a href="tel:+919724444701">
+            <LucidePhone className="mr-2" /> Call Now
+          </a>
         </Button>
         <Button className="bg-green-600 text-white px-4 py-2 rounded-full mr-4">
           Request Callback

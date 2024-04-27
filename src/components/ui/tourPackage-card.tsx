@@ -8,13 +8,18 @@ import { LucidePhone, LucideStar } from "lucide-react";
 import { Button } from "./button";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Fab } from "@mui/material";
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import PhoneIcon from '@mui/icons-material/Phone';
+import  PhoneCallbackIcon from '@mui/icons-material/PhoneCallback';
+
 
 interface TourPackageCard {
   data: TourPackage;
   location: Location;
 }
 
-const badges = ['Recommended', 'Trending', 'Hot & New', 'Pick of the Week','Summer Sale', 'Best Value', 'Limited Offer', 'Popular'];
+const badges = ['Recommended', 'Trending', 'Hot & New', 'Pick of the Week', 'Sale', 'Best Value', 'Limited Offer', 'Popular'];
 
 const TourPackageCard: React.FC<TourPackageCard> = ({
   data,
@@ -26,10 +31,25 @@ const TourPackageCard: React.FC<TourPackageCard> = ({
 
   const [badge, setBadge] = useState(badges[Math.floor(Math.random() * badges.length)]);
 
+  const phoneNumber = '919724444701';
+  const whatsappMessage = 'Check out this amazing tour itinerary';
 
-  const handleClick = () => {
-    router.push(`/tourPackage/${data?.id}`);
+  const handleCall = () => {
+    window.location.href = `tel:${phoneNumber}`;
   };
+
+  const handleCallback = () => {
+      router.push(`/#contact-us`);
+    };
+  
+
+  const handleWhatsApp = () => {
+    window.location.href = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(whatsappMessage)}`;
+  };
+
+
+
+ 
 
   /*  const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
      event.stopPropagation();
@@ -77,7 +97,7 @@ const TourPackageCard: React.FC<TourPackageCard> = ({
         {/* Middle section with package title */}
         <div className="text-sm font-bold text-gray-800 mb-1">{data.tourPackageName}</div>
 
-        {/* Sale badge */}  
+        {/* Sale badge */}
         <div className="flex items-center bg-gradient-to-r from-red-500 to-red-700 text-white text-xs font-bold uppercase px-2 py-1 inline-flex rounded mb-1">
           <FaTag className="mr-2" />
           {badge}
@@ -88,17 +108,23 @@ const TourPackageCard: React.FC<TourPackageCard> = ({
           <span className="text-sm font-bold text-red-600 ml-4 mb-1">{data.price}</span>
         </div>
 
-
-        {/* Action buttons */}
-        <div className="flex justify-between gap-2 mb-4">
-          <Button variant="outline" className="border border-green-500 hover:border-green-600" >
-            <LucidePhone className="mr-2" /> Call Now
-          </Button>
-          <Button className="bg-green-600 text-white px-4 py-2 rounded-full mr-4">
-            Request Callback
-          </Button>
-        </div>
       </Link>
+
+      {/* Action buttons */}
+
+
+
+      <div className="flex justify-center mb-4">
+        <Fab size="small" color="primary" onClick={handleCall} style={{ marginRight: '24px', backgroundColor: '#007bff', color: 'white' }}>
+          <PhoneIcon />
+        </Fab>
+        <Fab size="small" color="primary" onClick={handleWhatsApp} style={{ marginRight: '24px', backgroundColor: '#25d366', color: 'white' }}>
+          <WhatsAppIcon />
+        </Fab>
+        <Fab size="small" color="primary" onClick={handleCallback} style={{ marginRight: '24px', backgroundColor: '#25d366', color: 'white' }}>
+          <PhoneCallbackIcon />
+        </Fab>
+      </div>
     </div>
   );
 }
