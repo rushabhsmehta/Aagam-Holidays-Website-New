@@ -41,7 +41,7 @@ const TourPackageCard: React.FC<TourPackageCard> = ({
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   const phoneNumber = '919724444701';
-  const whatsappMessage = 'Check out this amazing tour itinerary' + data.tourPackageName;
+  const whatsappMessage = 'Hi ! I am interested in ' + data.tourPackageName + ' tour package. Please provide me more details.';
 
   const handleCall = (event: { preventDefault: () => void; }) => {
     event.preventDefault();
@@ -137,7 +137,10 @@ const TourPackageCard: React.FC<TourPackageCard> = ({
             </Fab>
           </PopoverTrigger>
           <PopoverContent className="w-80">
-            <form>
+            <form onSubmit={(e) => {
+              e.preventDefault();
+              alert('Form submitted');
+            }}>
               <h2 className="text-lg font-bold mb-4">Get a Callback</h2>
               <div className="grid gap-4">
                 <div className="grid items-center gap-2">
