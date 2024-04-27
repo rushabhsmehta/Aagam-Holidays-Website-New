@@ -132,7 +132,7 @@ const TourPackageCard: React.FC<TourPackageCard> = ({
 
         <Popover>
           <PopoverTrigger asChild>
-            <Fab size="small" color="primary" onClick={handleCallback} style={{ marginRight: '24px', backgroundColor: '#25d366', color: 'white' }}>
+            <Fab size="small" color="primary" style={{ marginRight: '24px', backgroundColor: '#25d366', color: 'white' }}>
               <PhoneCallbackIcon />
             </Fab>
           </PopoverTrigger>
