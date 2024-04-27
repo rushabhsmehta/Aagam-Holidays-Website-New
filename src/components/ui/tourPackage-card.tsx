@@ -137,41 +137,42 @@ const TourPackageCard: React.FC<TourPackageCard> = ({
             </Fab>
           </PopoverTrigger>
           <PopoverContent className="w-80">
-            <div className="grid gap-4">
-              <div className="grid items-center gap-2">
-                <Label htmlFor="name">Name</Label>
-                <Input
-                  id="name"
-                  className="h-8"
-                />
+            <form>
+              <h2 className="text-lg font-bold mb-4">Get a Callback</h2>
+              <div className="grid gap-4">
+                <div className="grid items-center gap-2">
+                  <Label htmlFor="name">Name</Label>
+                  <Input
+                    id="name"
+                    className="h-8"
+                  />
+                </div>
+                <div className="grid items-center gap-2">
+                  <Label htmlFor="mobile">Mobile Number</Label>
+                  <Input
+                    id="mobile"
+                    className="h-8"
+                  />
+                </div>
+                <div className="grid items-center gap-2">
+                  <Label htmlFor="email">Email</Label>
+                  <Input
+                    id="email"
+                    className="h-8"
+                  />
+                </div>
+                <div className="grid items-center gap-2">
+                  <Label htmlFor="message">Message</Label>
+                  <textarea
+                    id="message"
+                    className="h-20 w-full px-3 py-2 rounded shadow"
+                  />
+                </div>
+                <Button variant="default" className="mt-4">Submit</Button>
               </div>
-              <div className="grid items-center gap-2">
-                <Label htmlFor="mobile">Mobile Number</Label>
-                <Input
-                  id="mobile"
-                  className="h-8"
-                />
-              </div>
-              <div className="grid items-center gap-2">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  className="h-8"
-                />
-              </div>
-              <div className="grid items-center gap-2">
-                <Label htmlFor="message">Message</Label>
-                <Input
-                  id="message"
-                  className="h-8"
-                />
-              </div>
-              <Button variant="default" className="mt-4">Submit</Button>
-            </div>
+            </form>
           </PopoverContent>
         </Popover>
-
-
       </div>
     </div>
   );
