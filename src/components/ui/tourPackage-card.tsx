@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import { Fab } from "@mui/material";
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import PhoneIcon from '@mui/icons-material/Phone';
-import  PhoneCallbackIcon from '@mui/icons-material/PhoneCallback';
+import PhoneCallbackIcon from '@mui/icons-material/PhoneCallback';
 
 
 interface TourPackageCard {
@@ -34,22 +34,25 @@ const TourPackageCard: React.FC<TourPackageCard> = ({
   const phoneNumber = '919724444701';
   const whatsappMessage = 'Check out this amazing tour itinerary';
 
-  const handleCall = () => {
+  const handleCall = (event: { preventDefault: () => void; }) => {
+    event.preventDefault();
     window.location.href = `tel:${phoneNumber}`;
   };
 
-  const handleCallback = () => {
-      router.push(`/#contact-us`);
-    };
-  
+  const handleCallback = (event: { preventDefault: () => void; }) => {
+    event.preventDefault();
+    router.push(`/#contact-us`);
+  };
 
-  const handleWhatsApp = () => {
+
+  const handleWhatsApp = (event: { preventDefault: () => void; }) => {
+    event.preventDefault();
     window.location.href = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(whatsappMessage)}`;
   };
 
 
 
- 
+
 
   /*  const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
      event.stopPropagation();
