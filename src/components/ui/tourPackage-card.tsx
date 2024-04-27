@@ -166,7 +166,7 @@ const TourPackageCard: React.FC<TourPackageCard> = ({
                   className="h-8"
                 />
               </div>
-              <Button variant="solid" className="mt-4">Submit</Button>
+              <Button variant="default" className="mt-4">Submit</Button>
             </div>
           </PopoverContent>
         </Popover>
