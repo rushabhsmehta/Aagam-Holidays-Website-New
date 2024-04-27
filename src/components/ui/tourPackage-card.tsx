@@ -13,6 +13,13 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import PhoneIcon from '@mui/icons-material/Phone';
 import PhoneCallbackIcon from '@mui/icons-material/PhoneCallback';
 import ContactUs from "../contact-us";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
 
 interface TourPackageCard {
@@ -122,28 +129,56 @@ const TourPackageCard: React.FC<TourPackageCard> = ({
         <Fab size="small" color="primary" onClick={handleWhatsApp} style={{ marginRight: '24px', backgroundColor: '#25d366', color: 'white' }}>
           <WhatsAppIcon />
         </Fab>
-        <Fab size="small" color="primary" onClick={handleCallback} style={{ marginRight: '24px', backgroundColor: '#25d366', color: 'white' }}>
-          <PhoneCallbackIcon />
-        </Fab>
 
-        {isContactModalOpen && (
-                <div className="fixed z-10 inset-0 overflow-y-auto">
-                    <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-                        <div className="fixed inset-0 transition-opacity" aria-hidden="true">
-                            <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
-                        </div>
-                        <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-                        <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-                            <ContactUs />
-                            <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                                <button type="button" className="mt-3 w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" onClick={() => setIsContactModalOpen(false)}>
-                                    Close
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+        <Popover>
+          <PopoverTrigger asChild>
+            <Fab size="small" color="primary" onClick={handleCallback} style={{ marginRight: '24px', backgroundColor: '#25d366', color: 'white' }}>
+              <PhoneCallbackIcon />
+            </Fab>
+          </PopoverTrigger>
+          <PopoverContent className="w-80">
+            <div className="grid gap-4">
+              <div className="space-y-2">
+                <h4 className="font-medium leading-none">Contact Us</h4>
+                <p className="text-sm text-muted-foreground">
+                  Please fill out the form below.
+                </p>
+              </div>
+              <div className="grid gap-2">
+                <div className="grid grid-cols-3 items-center gap-4">
+                  <Label htmlFor="name">Name</Label>
+                  <Input
+                    id="name"
+                    className="col-span-2 h-8"
+                  />
                 </div>
-            )}
+                <div className="grid grid-cols-3 items-center gap-4">
+                  <Label htmlFor="mobile">Mobile Number</Label>
+                  <Input
+                    id="mobile"
+                    className="col-span-2 h-8"
+                  />
+                </div>
+                <div className="grid grid-cols-3 items-center gap-4">
+                  <Label htmlFor="email">Email</Label>
+                  <Input
+                    id="email"
+                    className="col-span-2 h-8"
+                  />
+                </div>
+                <div className="grid grid-cols-3 items-center gap-4">
+                  <Label htmlFor="message">Message</Label>
+                  <Input
+                    id="message"
+                    className="col-span-2 h-8"
+                  />
+                </div>
+                <Button variant="default" className="col-span-3">Submit</Button>
+              </div>
+            </div>
+          </PopoverContent>
+        </Popover>
+
 
       </div>
     </div>
