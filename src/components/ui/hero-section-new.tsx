@@ -1,16 +1,19 @@
 'use client'
+import getLocationsBySearchTerm from '@/actions/get-locationsfromSearchTerm';
+import getTourPackages from '@/actions/get-tourPackages';
+import { Router } from 'lucide-react';
 // Import necessary components and hooks
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 export default function HeroSectionNew() {
   const [searchQuery, setSearchQuery] = useState('');
-
+  const router = useRouter();
   // Handle the search action
-  const handleSearch = (event: { preventDefault: () => void; }) => {
+  const handleSearch = (event: React.FormEvent) => {
     event.preventDefault();
-    console.log('Searching for:', searchQuery);
-    // Implement the search logic or redirection here
+    router.push(`/searchPage/${searchQuery}`);
   };
 
   return (
@@ -32,7 +35,7 @@ export default function HeroSectionNew() {
       <div className="z-20">
         <h1 className="text-4xl md:text-6xl font-bold">Unleash Your Wanderlust</h1>
         <p className="mt-4 text-xl md:text-2xl">Discover the most extraordinary places</p>
-        
+
         {/* Search Form */}
         <form onSubmit={handleSearch} className="mt-8">
           <input
