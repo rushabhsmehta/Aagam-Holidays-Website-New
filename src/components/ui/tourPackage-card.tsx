@@ -20,6 +20,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import axios from "axios";
 
 
 interface TourPackageCard {
@@ -39,6 +40,10 @@ const TourPackageCard: React.FC<TourPackageCard> = ({
 
   const [badge, setBadge] = useState(badges[Math.floor(Math.random() * badges.length)]);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [name, setName] = useState('');
+  const [mobile, setMobile] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
 
   const phoneNumber = '919724444701';
   const whatsappMessage = 'Hi ! I am interested in ' + data.tourPackageName + ' tour package. Please provide me more details.';
@@ -59,17 +64,17 @@ const TourPackageCard: React.FC<TourPackageCard> = ({
     window.location.href = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(whatsappMessage)}`;
   };
 
-  /*  const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
-     event.stopPropagation();
- 
-     previewModal.onOpen(data);
-   };
- 
-   const onAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
-     event.stopPropagation();
- 
-     cart.addItem(data);
-   }; */
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+
+    try {
+      const response = await axios.post('/api/send');
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
 
   return (
     <div
@@ -137,16 +142,15 @@ const TourPackageCard: React.FC<TourPackageCard> = ({
             </Fab>
           </PopoverTrigger>
           <PopoverContent className="w-80">
-            <form onSubmit={(e) => {
-              e.preventDefault();
-              alert('Form submitted');
-            }}>
+            <form onSubmit={handleSubmit}>
               <h2 className="text-lg font-bold mb-4">Get a Callback</h2>
               <div className="grid gap-4">
                 <div className="grid items-center gap-2">
                   <Label htmlFor="name">Name</Label>
                   <Input
                     id="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     className="h-8"
                   />
                 </div>
@@ -154,6 +158,8 @@ const TourPackageCard: React.FC<TourPackageCard> = ({
                   <Label htmlFor="mobile">Mobile Number</Label>
                   <Input
                     id="mobile"
+                    value={mobile}
+                    onChange={(e) => setMobile(e.target.value)}
                     className="h-8"
                   />
                 </div>
@@ -161,6 +167,8 @@ const TourPackageCard: React.FC<TourPackageCard> = ({
                   <Label htmlFor="email">Email</Label>
                   <Input
                     id="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     className="h-8"
                   />
                 </div>
@@ -168,6 +176,8 @@ const TourPackageCard: React.FC<TourPackageCard> = ({
                   <Label htmlFor="message">Message</Label>
                   <textarea
                     id="message"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
                     className="h-20 w-full px-3 py-2 rounded shadow"
                   />
                 </div>
