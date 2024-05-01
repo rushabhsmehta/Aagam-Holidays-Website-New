@@ -4,7 +4,8 @@ import { EmailTemplate } from '@/components/email-template';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export async function POST (req: Request, res: Response) 
+{
 try {
     const { data, error } = await resend.emails.send({
         from: 'Acme <onboarding@resend.dev>',
@@ -18,9 +19,10 @@ try {
         throw new Error(error.toString()); // Modify the line to pass the error message as a string
     }
 
-    res.status(200).json(data);
+ return Response.json({message : "Email sent sucessfully"})
+
 } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'An error occurred while sending the email' });
+    return Response.json({ error: 'An error occurred while sending the email' });
   }
 };
