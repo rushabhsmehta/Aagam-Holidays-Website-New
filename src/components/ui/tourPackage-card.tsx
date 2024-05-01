@@ -67,8 +67,15 @@ const TourPackageCard: React.FC<TourPackageCard> = ({
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
+    const formData = {
+      name,
+      mobile,
+      email,
+      message,
+    };
+
     try {
-      const response = await axios.post('/api/send');
+      const response = await axios.post('/api/send', formData);
       console.log(response.data);
     } catch (error) {
       console.error(error);
