@@ -15,10 +15,7 @@ import PhoneCallbackIcon from '@mui/icons-material/PhoneCallback';
 import ContactUs from "../contact-us";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { toast, useToast } from "@/components/ui/use-toast"
-
 import {
-
   Popover,
   PopoverContent,
   PopoverTrigger,
@@ -66,7 +63,6 @@ const TourPackageCard: React.FC<TourPackageCard> = ({
   //  const cart = useCart();
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] =  useState(false);
   const [badge, setBadge] = useState(badges[Math.floor(Math.random() * badges.length)]);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [name, setName] = useState('');
@@ -94,7 +90,7 @@ const TourPackageCard: React.FC<TourPackageCard> = ({
   };
 
   const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
+    resolver: zodResolver(FormSchema),    
   })
 
   const onSubmit = async () => {
@@ -112,15 +108,6 @@ const TourPackageCard: React.FC<TourPackageCard> = ({
         throw new Error('Network response was not ok');
       }
 
-      setIsSubmitted(true);
-      {isSubmitted && 
-      toast({
-      title: "You submitted the following values:",
-      description: JSON.stringify({ name, mobile, email, message }),
-    
-    })}
-
-      
       // Handle response...
     } catch (error) {
       console.error('Error:', error);
@@ -253,13 +240,13 @@ const TourPackageCard: React.FC<TourPackageCard> = ({
                   )}
                 />
 
-                <Button type="submit" disabled={isSubmitting}>Submit</Button>
+<Button type="submit" disabled={isSubmitting}>Submit</Button>
               </form>
             </Form>
 
-          </PopoverContent>
-        </Popover>
-      </div>
+        </PopoverContent>
+      </Popover>
+    </div>
     </div >
   );
 }
