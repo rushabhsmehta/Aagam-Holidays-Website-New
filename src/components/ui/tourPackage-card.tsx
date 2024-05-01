@@ -117,9 +117,7 @@ const TourPackageCard: React.FC<TourPackageCard> = ({
       toast({
       title: "You submitted the following values:",
       description: JSON.stringify({ name, mobile, email, message }),
-      status: "success",
-      duration: 9000,
-      isClosable: true,
+    
     })}
 
       
