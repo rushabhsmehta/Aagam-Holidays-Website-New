@@ -15,18 +15,46 @@ import PhoneCallbackIcon from '@mui/icons-material/PhoneCallback';
 import ContactUs from "../contact-us";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { toast, useToast } from "@/components/ui/use-toast"
+
 import {
+
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import axios from "axios";
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form"
 
 
 interface TourPackageCard {
   data: TourPackage;
   location: Location;
 }
+
+const FormSchema = z.object({
+  name: z.string().min(2, {
+    message: "Name must be at least 2 characters.",
+  }),
+  mobileNumber: z.string().min(10, {
+    message: "Mobile number must be at least 10 characters.",
+  }),
+  email: z.string().email({
+    message: "Invalid email address.",
+  }).optional(),
+  message: z.string().optional(),
+
+})
 
 const badges = ['Recommended', 'Trending', 'Hot & New', 'Pick of the Week', 'Sale', 'Best Value', 'Limited Offer', 'Popular'];
 
@@ -37,7 +65,8 @@ const TourPackageCard: React.FC<TourPackageCard> = ({
   //  const previewModal = usePreviewModal();
   //  const cart = useCart();
   const router = useRouter();
-
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] =  useState(false);
   const [badge, setBadge] = useState(badges[Math.floor(Math.random() * badges.length)]);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [name, setName] = useState('');
@@ -64,21 +93,42 @@ const TourPackageCard: React.FC<TourPackageCard> = ({
     window.location.href = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(whatsappMessage)}`;
   };
 
-  const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault();
+  const form = useForm<z.infer<typeof FormSchema>>({
+    resolver: zodResolver(FormSchema),
+  })
 
-    const formData = {
-      name,
-      mobile,
-      email,
-      message,
-    };
-
+  const onSubmit = async () => {
+    setIsSubmitting(true);
     try {
-      const response = await axios.post('/api/send', formData);
-      console.log(response.data);
+      const response = await fetch('/api/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, mobile, email, message }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      setIsSubmitted(true);
+      {isSubmitted && 
+      toast({
+      title: "You submitted the following values:",
+      description: JSON.stringify({ name, mobile, email, message }),
+      status: "success",
+      duration: 9000,
+      isClosable: true,
+    })}
+
+      
+      // Handle response...
     } catch (error) {
-      console.error(error);
+      console.error('Error:', error);
+    }
+    finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -149,52 +199,70 @@ const TourPackageCard: React.FC<TourPackageCard> = ({
             </Fab>
           </PopoverTrigger>
           <PopoverContent className="w-80">
-            <form onSubmit={handleSubmit}>
-              <h2 className="text-lg font-bold mb-4">Get a Callback</h2>
-              <div className="grid gap-4">
-                <div className="grid items-center gap-2">
-                  <Label htmlFor="name">Name</Label>
-                  <Input
-                    id="name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    className="h-8"
-                  />
-                </div>
-                <div className="grid items-center gap-2">
-                  <Label htmlFor="mobile">Mobile Number</Label>
-                  <Input
-                    id="mobile"
-                    value={mobile}
-                    onChange={(e) => setMobile(e.target.value)}
-                    className="h-8"
-                  />
-                </div>
-                <div className="grid items-center gap-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input
-                    id="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="h-8"
-                  />
-                </div>
-                <div className="grid items-center gap-2">
-                  <Label htmlFor="message">Message</Label>
-                  <textarea
-                    id="message"
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    className="h-20 w-full px-3 py-2 rounded shadow"
-                  />
-                </div>
-                <Button variant="default" className="mt-4">Submit</Button>
-              </div>
-            </form>
+            <Form {...form}>
+
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Name</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Name" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="mobileNumber"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Mobile Number</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Mobile Number" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Email</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Email" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Message</FormLabel>
+                      <FormControl>
+                        <textarea placeholder="Message" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <Button type="submit" disabled={isSubmitting}>Submit</Button>
+              </form>
+            </Form>
+
           </PopoverContent>
         </Popover>
       </div>
-    </div>
+    </div >
   );
 }
 
