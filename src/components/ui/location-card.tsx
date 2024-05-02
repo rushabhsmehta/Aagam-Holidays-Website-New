@@ -48,7 +48,7 @@ const LocationCard: React.FC<LocationCard> = ({
       <Image
         className="rounded"
         src={data.imageUrl}
-        alt={data.imageUrl}
+        alt={data.label}
         sizes="100vw"
         style={{
           width: 'auto',

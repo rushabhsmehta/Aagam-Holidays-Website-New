@@ -55,7 +55,7 @@ const TourPackageDetails: React.FC<TourPackageDetailsProps> =  ({ data, hotels, 
                   {itinerary.itineraryImages[0] && (
                     <Image
                       src={itinerary.itineraryImages[0].url}
-                      alt={`Itinerary Image`}
+                      alt=""
                       layout="fill"
                       objectFit="cover"
                       className="rounded-lg"
@@ -71,7 +71,7 @@ const TourPackageDetails: React.FC<TourPackageDetailsProps> =  ({ data, hotels, 
                       <Image
                         key={imgIndex}
                         src={image.url}
-                        alt={`Hotel Image ${imgIndex + 1}`}
+                        alt=""
                         width={200}
                         height={200}
                         className="rounded-lg object-cover mb-2"
@@ -114,7 +114,7 @@ const TourPackageDetails: React.FC<TourPackageDetailsProps> =  ({ data, hotels, 
                       {activity.activityImages[0] && (
                         <Image
                           src={activity.activityImages[0].url}
-                          alt={`Activity Image`}
+                          alt=""
                           layout="fill"
                           objectFit="cover"
                           className="rounded-lg"

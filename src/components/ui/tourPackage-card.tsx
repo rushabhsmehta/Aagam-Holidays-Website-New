@@ -43,7 +43,7 @@ const FormSchema = z.object({
   name: z.string().min(2, {
     message: "Name must be at least 2 characters.",
   }),
-  mobileNumber: z.string().min(10, {
+  mobile: z.string().min(10, {
     message: "Mobile number must be at least 10 characters.",
   }),
   email: z.string().email({
@@ -63,6 +63,7 @@ const TourPackageCard: React.FC<TourPackageCard> = ({
   //  const cart = useCart();
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [badge, setBadge] = useState(badges[Math.floor(Math.random() * badges.length)]);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [name, setName] = useState('');
@@ -89,26 +90,30 @@ const TourPackageCard: React.FC<TourPackageCard> = ({
     window.location.href = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(whatsappMessage)}`;
   };
 
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),    
+  type FormValues = z.infer<typeof FormSchema>;
+
+  const form = useForm<FormValues>({
+    resolver: zodResolver(FormSchema),
   })
 
-  const onSubmit = async () => {
+  const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
+
     try {
+
       const response = await fetch('/api/send', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name, mobile, email, message }),
+        body: JSON.stringify(data),
       });
 
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
 
-      // Handle response...
+      setIsSubmitted(true);
     } catch (error) {
       console.error('Error:', error);
     }
@@ -128,7 +133,7 @@ const TourPackageCard: React.FC<TourPackageCard> = ({
         <Image
           className="rounded"
           src={data.images[0]?.url}
-          alt={data.images[0]?.url}
+          alt=""
           sizes="100vw"
           style={{
             width: 'auto',
@@ -184,69 +189,82 @@ const TourPackageCard: React.FC<TourPackageCard> = ({
             </Fab>
           </PopoverTrigger>
           <PopoverContent className="w-80">
-            <Form {...form}>
 
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                <FormField
-                  control={form.control}
-                  name="name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Name</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Name" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="mobileNumber"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Mobile Number</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Mobile Number" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Email</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Email" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="message"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Message</FormLabel>
-                      <FormControl>
-                        <textarea placeholder="Message" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+            {
+              isSubmitted ? (
+                <div className="text-center">
+                  <h2 className="text-2xl font-bold text-green-500">Thank you for your submission!</h2>
+                  <p className="text-gray-600">We will get back to you soon.</p>
+                </div>
+              ) : (
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-800">Contact Us</h2>
+                  <p className="text-gray-600">Please fill in your details and we will get back to you soon.</p>
 
-<Button type="submit" disabled={isSubmitting}>Submit</Button>
-              </form>
-            </Form>
+                  < Form {...form}>
 
-        </PopoverContent>
-      </Popover>
-    </div>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                      <FormField
+                        control={form.control}
+                        name="name"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Name</FormLabel>
+                            <FormControl>
+                              <Input placeholder="Name" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="mobile"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Mobile Number</FormLabel>
+                            <FormControl>
+                              <Input placeholder="Mobile Number" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Email</FormLabel>
+                            <FormControl>
+                              <Input placeholder="Email" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="message"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Message</FormLabel>
+                            <FormControl>
+                              <textarea placeholder="Message" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <Button type="submit" disabled={isSubmitting}>Submit</Button>
+                    </form>
+                  </Form>
+                </div>
+              )}
+          </PopoverContent>
+        </Popover>
+      </div>
     </div >
   );
 }
