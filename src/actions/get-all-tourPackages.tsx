@@ -8,7 +8,7 @@ interface Query {
 //   categoryId?: string;
 //   colorId?: string;
 //   sizeId?: string;
-//     isFeatured?: boolean;
+isFeatured?: boolean;
 storeId : string;
 }
 
@@ -17,7 +17,7 @@ const getalltourPackages = async (query: Query): Promise<TourPackage[]> => {
     url: URL,
     query: {
     storeId : query.storeId, 
-   // isFeatured : true,
+    isFeatured : true,
     //   locationId : query.locationId,
     //   colorId: query.colorId,
     //   sizeId: query.sizeId,
