@@ -1,27 +1,27 @@
 import { TourPackage } from "../../types";
 import qs from "query-string";
 
-const URL=`${process.env.NEXT_PUBLIC_API_URL}/tourPackages`;
+const URL = `${process.env.NEXT_PUBLIC_API_URL}/tourPackages`;
 
 interface Query {
- //   locationId? : string;
-//   categoryId?: string;
-//   colorId?: string;
-//   sizeId?: string;
-//     isFeatured?: boolean;
-locationId : string;
+  //   locationId? : string;
+  //   categoryId?: string;
+  //   colorId?: string;
+  //   sizeId?: string;
+  //     isFeatured?: boolean;
+  locationId: string;
 }
 
 const gettourPackages = async (query: Query): Promise<TourPackage[]> => {
   const url = qs.stringifyUrl({
     url: URL,
-    query: { 
-    //   locationId : query.locationId,
-    //   colorId: query.colorId,
-    //   sizeId: query.sizeId,
-    //   categoryId: query.categoryId,
-    locationId : query.locationId,
-   // isFeatured : query.isFeatured,
+    query: {
+      //   locationId : query.locationId,
+      //   colorId: query.colorId,
+      //   sizeId: query.sizeId,
+      //   categoryId: query.categoryId,
+      locationId: query.locationId,
+      isFeatured: true,
     },
   });
 
