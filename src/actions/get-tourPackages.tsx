@@ -21,7 +21,7 @@ const gettourPackages = async (query: Query): Promise<TourPackage[]> => {
       //   sizeId: query.sizeId,
       //   categoryId: query.categoryId,
       locationId: query.locationId,
-      isFeatured: true,
+    //  isFeatured: true,
     },
   });
 
