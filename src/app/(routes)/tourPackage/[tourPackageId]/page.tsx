@@ -16,7 +16,6 @@ interface TourPackagePageProps {
 export async function generateStaticParams() {
 const tourPackages = await getalltourPackages({ 
   storeId: "3eb7df82-57cc-4c68-aaeb-6b2531cd72d5", 
-  isFeatured: true 
 });  
 
 return tourPackages.map(tourPackage => ({
