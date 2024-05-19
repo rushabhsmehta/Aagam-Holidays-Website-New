@@ -1,23 +1,21 @@
 import { TourPackage } from "../../types";
 import qs from "query-string";
 
-const URL=`${process.env.NEXT_PUBLIC_API_URL}/tourPackages`;
+const URL=`${process.env.NEXT_PUBLIC_API_URL}/tourPackagesForWebsite`;
 
 interface Query {
  //   locationId? : string;
 //   categoryId?: string;
 //   colorId?: string;
 //   sizeId?: string;
-isFeatured?: boolean;
 storeId : string;
 }
 
 const getalltourPackages = async (query: Query): Promise<TourPackage[]> => {
-  const url = qs.stringifyUrl({
+  /* const url = qs.stringifyUrl({
     url: URL,
     query: {
     storeId : query.storeId, 
-    isFeatured : query.isFeatured,
     //   locationId : query.locationId,
     //   colorId: query.colorId,
     //   sizeId: query.sizeId,
@@ -25,9 +23,9 @@ const getalltourPackages = async (query: Query): Promise<TourPackage[]> => {
     //locationId : query.locationId,
    // isFeatured : query.isFeatured,
     },
-  });
+  }); */
 
-  const res = await fetch(url);
+  const res = await fetch('${URL}');
 
   return res.json();
 };
