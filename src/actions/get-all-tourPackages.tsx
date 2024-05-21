@@ -25,7 +25,7 @@ const getalltourPackages = async (query: Query): Promise<TourPackage[]> => {
     },
   }); */
 
-  const res = await fetch(`${URL}`, { next: { revalidate: 60 } });
+  const res = await fetch(`${URL}`);
 
   return res.json();
 };
