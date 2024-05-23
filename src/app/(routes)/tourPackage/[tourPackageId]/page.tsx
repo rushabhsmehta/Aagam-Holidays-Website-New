@@ -13,7 +13,7 @@ interface TourPackagePageProps {
   },
 }
 
-export async function generateStaticParams() {
+/* export async function generateStaticParams() {
 const tourPackages = await getalltourPackages({ 
   storeId: "3eb7df82-57cc-4c68-aaeb-6b2531cd72d5", 
 });  
@@ -22,7 +22,7 @@ return tourPackages.map(tourPackage => ({
     tourPackageId: tourPackage.id
   } // Ensure parameters match your dynamic route segments
   ));
-}
+} */
 
 export async function generateMetadata({ params: { tourPackageId } }: TourPackagePageProps) {
 

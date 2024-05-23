@@ -15,12 +15,12 @@ interface LocationPageProps {
   },
 }
 
-export async function generateStaticParams() {
+/* export async function generateStaticParams() {
   const data = await getLocationsByStore({ storeId: "3eb7df82-57cc-4c68-aaeb-6b2531cd72d5" });
   return data.map(item => ({
      locationId: item.id } // Ensure parameters match your dynamic route segments
   ));
-}
+} */
 
 export async function generateMetadata({ params: { locationId } }: LocationPageProps) {
 

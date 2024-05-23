@@ -20,14 +20,14 @@ interface TourPackagePageProps {
 
 
 
-export async function generateStaticParams() {
+/* export async function generateStaticParams() {
   const data = await getLocationsByStore({ storeId: "3eb7df82-57cc-4c68-aaeb-6b2531cd72d5" });
   return data.map(item => ({
     locationId: item.id
-  } // Ensure parameters match your dynamic route segments
+  }
   ));
 }
-
+ */
 export async function generateMetadata({ params: { locationId } }: TourPackagePageProps) {
 
   const location = await getLocationById(locationId) //deduped!
@@ -62,9 +62,9 @@ const TourPackagePage: React.FC<TourPackagePageProps> = async ({
       {tourPackages.length === 0 && <NoResults />}
       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 
-          {tourPackages.map((tourPackage) => (
-            <TourPackageCard key={tourPackage.id} location = {location} data={tourPackage} />
-          ))}
+        {tourPackages.map((tourPackage) => (
+          <TourPackageCard key={tourPackage.id} location={location} data={tourPackage} />
+        ))}
 
       </div>
     </div>
