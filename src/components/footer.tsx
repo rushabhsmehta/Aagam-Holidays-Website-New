@@ -56,7 +56,7 @@ const Footer: React.FC = () => {
               Useful Links
             </h6>
             <ul>
-              <li className="mb-4"><Link href="#" className="text-white">Contact Us</Link></li>
+              <li className="mb-4"><Link href="/#contact-us" className="text-white">Contact Us</Link></li>
               <li className="mb-4"><Link href="#" className="text-white">FAQ</Link></li>
               <li className="mb-4"><Link href="#" className="text-white">Book Now</Link></li>
               <li><Link href="#" className="text-white">Customer Reviews</Link></li>
