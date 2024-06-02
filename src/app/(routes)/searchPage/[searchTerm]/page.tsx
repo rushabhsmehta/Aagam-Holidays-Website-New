@@ -10,8 +10,6 @@ interface SearchPageProps {
     },
 }
 
-
-
 const SearchPage: React.FC<SearchPageProps> = async ({ params }) => {
     const title = `Search Results for: ${params.searchTerm}`;
 
@@ -27,7 +25,7 @@ const SearchPage: React.FC<SearchPageProps> = async ({ params }) => {
     } catch (error) {
         console.error('Error fetching data:', error);
         // Handle the error gracefully, e.g., display an error message to the user
-        return <div style={{ marginTop: 20 }}>Error fetching data. Please try again later.</div>;
+        return <div style={{ marginTop: 60 }}>Error fetching data. Please try again later.</div>;
     }
 };
 export default SearchPage;
