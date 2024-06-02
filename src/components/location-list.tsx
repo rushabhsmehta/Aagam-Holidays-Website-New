@@ -7,7 +7,7 @@ import TourPackageCard from "./ui/tourPackage-card";
 interface LocationListProps {
   title: string;
   items: Location[];
-  tourPackages: any[];
+  tourPackages: TourPackage[][];
 }
 
 const LocationListClient: React.FC<LocationListProps> = ({ title, items, tourPackages }) => {
