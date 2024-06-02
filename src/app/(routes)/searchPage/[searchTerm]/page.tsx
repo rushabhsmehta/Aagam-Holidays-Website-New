@@ -1,48 +1,31 @@
-'use client'
-import React, { useState } from 'react';
-import { Location, TourPackage } from '../../../../../types';
+import React from 'react';
+import { Location } from '../../../../../types';
 import getLocationsFromSearchTerm from '@/actions/get-locationsfromSearchTerm';
 import getTourPackages from '@/actions/get-tourPackages';
 import LocationList from '@/components/location-list';
 
 interface SearchPageProps {
-  params: {
-    searchTerm: string;
-  };
+    params: {
+        searchTerm: string;
+    },
 }
 
-const SearchPage: React.FC<SearchPageProps> = ({ params }) => {
-  const title = `Search Results for: ${params.searchTerm}`;
-  const [items, setItems] = useState<Location[]>([]);
-  const [tourPackages, setTourPackages] = useState<TourPackage[][]>([]);
+const SearchPage: React.FC<SearchPageProps> = async ({ params }) => {
+    const title = `Search Results for: ${params.searchTerm}`;
 
-  // Fetch data directly in the component function
-  const fetchData = async () => {
     try {
-        const fetchedItems = await getLocationsFromSearchTerm(params.searchTerm);
-        if (!Array.isArray(fetchedItems)) {
-            throw new Error('Fetched items is not an array');
-        }
-        setItems(fetchedItems);
-
-        const fetchedTourPackages = await Promise.all(
-            fetchedItems.map(async (item) => {
-                const packages = await getTourPackages({ locationId: item.id });
-                if (!Array.isArray(packages)) {
-                    throw new Error('Fetched packages is not an array');
-                }
-                return packages;
+        const items = await getLocationsFromSearchTerm(params.searchTerm);
+        const tourPackages = await Promise.all(
+            items.map(async (item) => {
+                return await getTourPackages({ locationId: item.id });
             })
         );
-        setTourPackages(fetchedTourPackages);
+
+        return <LocationList title={title} items={items} tourPackages={tourPackages} />;
     } catch (error) {
         console.error('Error fetching data:', error);
+        // Handle the error gracefully, e.g., display an error message to the user
+        return <div style={{ marginTop: 60 }}>Error fetching data. Please try again later.</div>;
     }
 };
-  // Call fetchData when the component renders
-  fetchData();
-
-  return <LocationList title={title} items={items} tourPackages={tourPackages} />;
-};
-
 export default SearchPage;
