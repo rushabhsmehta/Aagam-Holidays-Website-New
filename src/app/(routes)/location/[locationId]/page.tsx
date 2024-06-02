@@ -66,7 +66,8 @@ const LocationPage: React.FC<LocationPageProps> = async ({
                 className="aspect-square object-cover rounded-md"
               />
             </div>
-            <Gallery images={location.images} />
+          {/*   <Gallery images={location.images} /> */}
+          
             <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
               {/*               <Info data={tourPackage} />
  */}            </div>
