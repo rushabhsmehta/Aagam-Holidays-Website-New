@@ -7,19 +7,21 @@ import LocationList from '@/components/location-list';
 
 interface SearchPageProps {
     params: {
-        searchQuery: string;
+        searchTerm : string;
     },
 }
 
 const SearchPage: React.FC<SearchPageProps> = async ({
     params
-}: { params: { searchQuery: string } }) => {
-    const title = `Search Results for: ${params.searchQuery}`;
-    const items = await getLocationsBySearchTerm(params.searchQuery);
+}: { params: { searchTerm: string } }) => {
+    const title = `Search Results for: ${params.searchTerm}`;
+    const items = await getLocationsBySearchTerm(params.searchTerm );
     //fetch TourPackage based on each location item
     const tourPackages = await Promise.all(items.map(async (item) => {
         return await getTourPackages({ locationId: item.id });
     }));
+
+    
 
     return <LocationList title={title} items={items} tourPackages={tourPackages} />;
 

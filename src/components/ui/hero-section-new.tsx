@@ -13,7 +13,7 @@ export default function HeroSectionNew() {
   // Handle the search action
   const handleSearch = (event: React.FormEvent) => {
     event.preventDefault();
-    router.push(`/searchPage/${searchQuery.toLowerCase()}`);
+    router.push(`/searchPage/${searchQuery}`);
   };
 
   return (
