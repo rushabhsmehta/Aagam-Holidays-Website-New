@@ -35,7 +35,7 @@ const SearchPage: React.FC<SearchPageProps> = ({ params }) => {
                     setTourPackages(fetchedTourPackages);
                 }
             } catch (error) {
-                setError(error as string );
+                setError(error as string);
                 console.error('Error fetching data:', error);
             }
             setLoading(false);
@@ -53,7 +53,7 @@ const SearchPage: React.FC<SearchPageProps> = ({ params }) => {
     }
 
     if (items.length === 0) {
-        return <div>No results found for "{params.searchTerm}"</div>;
+        return <div>No results found for &quot;{params.searchTerm}&quot;</div>;
     }
 
     return <LocationList title={title} items={items} tourPackages={tourPackages} />;
