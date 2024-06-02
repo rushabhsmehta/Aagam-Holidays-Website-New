@@ -24,7 +24,6 @@ const SearchPage: React.FC<SearchPageProps> = ({ params }) => {
             setLoading(true);
             try {
                 const fetchedItems = await getLocationsFromSearchTerm(params.searchTerm);
-                console.log('fetchedItems', fetchedItems); // Add this line
                 setItems(fetchedItems);
 
                 if (fetchedItems.length > 0) {
@@ -54,7 +53,7 @@ const SearchPage: React.FC<SearchPageProps> = ({ params }) => {
     }
 
     if (items.length === 0) {
-        return <div>No results found</div>;
+        return <div>{`No results found for "${params.searchTerm}"`}</div>;
     }
 
     return <LocationList title={title} items={items} tourPackages={tourPackages} />;
