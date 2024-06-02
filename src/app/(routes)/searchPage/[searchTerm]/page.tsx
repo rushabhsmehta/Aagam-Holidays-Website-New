@@ -10,6 +10,22 @@ interface SearchPageProps {
     },
 }
 
+export async function generateMetadata({ params: { searchTerm } }: SearchPageProps) {
+
+    const items = await getLocationsFromSearchTerm(searchTerm);
+  
+    if (!items) {
+      return {
+  
+        title: 'No Tour Package Found'
+      }
+  
+      return {
+        title: searchTerm,
+      }
+    }
+  }
+
 const SearchPage: React.FC<SearchPageProps> = async ({ params }) => {
     const title = `Search Results for: ${params.searchTerm}`;
 
