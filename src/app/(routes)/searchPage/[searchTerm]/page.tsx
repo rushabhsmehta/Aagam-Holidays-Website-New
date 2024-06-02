@@ -1,8 +1,10 @@
+'use client'
 import React from 'react';
-import { Location } from '../../../../../types';
+import { Location, TourPackage } from '../../../../../types';
 import getLocationsFromSearchTerm from '@/actions/get-locationsfromSearchTerm';
 import getTourPackages from '@/actions/get-tourPackages';
 import LocationList from '@/components/location-list';
+import { useEffect, useState } from 'react';
 
 interface SearchPageProps {
     params: {
@@ -10,22 +12,32 @@ interface SearchPageProps {
     },
 }
 
-const SearchPage: React.FC<SearchPageProps> = async ({ params }) => {
+const SearchPage: React.FC<SearchPageProps> = ({ params }) => {
     const title = `Search Results for: ${params.searchTerm}`;
+    const [items, setItems] = useState<Location[]>([]);
+    const [tourPackages, setTourPackages] = useState<TourPackage[][]>([]);
 
-    try {
-        const items = await getLocationsFromSearchTerm(params.searchTerm);
-        const tourPackages = await Promise.all(
-            items.map(async (item) => {
-                return await getTourPackages({ locationId: item.id });
-            })
-        );
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const fetchedItems = await getLocationsFromSearchTerm(params.searchTerm);
+                setItems(fetchedItems);
 
-        return <LocationList title={title} items={items} tourPackages={tourPackages} />;
-    } catch (error) {
-        console.error('Error fetching data:', error);
-        // Handle the error gracefully, e.g., display an error message to the user
-        return <div style={{ marginTop: 60 }}>Error fetching data. Please try again later.</div>;
-    }
+                const fetchedTourPackages = await Promise.all(
+                    fetchedItems.map(async (item) => {
+                        return await getTourPackages({ locationId: item.id });
+                    })
+                );
+                setTourPackages(fetchedTourPackages);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+    }, [params.searchTerm]);
+
+    return <LocationList title={title} items={items} tourPackages={tourPackages} />;
 };
+
 export default SearchPage;
