@@ -24,7 +24,6 @@ const SearchPage: React.FC<SearchPageProps> = ({ params }) => {
             setLoading(true);
             try {
                 const fetchedItems = await getLocationsFromSearchTerm(params.searchTerm);
-                console.log('fetchedItems', fetchedItems); // Add this line
                 setItems(fetchedItems);
 
                 if (fetchedItems.length > 0) {
