@@ -31,7 +31,6 @@ const SearchPage: React.FC<SearchPageProps> = async ({ params }) => {
 
     try {
         const items = await getLocationsFromSearchTerm(params.searchTerm);
-        alert(items.length);
         const tourPackages = await Promise.all(
             items.map(async (item) => {
                 return await getTourPackages({ locationId: item.id });
