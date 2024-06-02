@@ -24,14 +24,17 @@ const SearchPage: React.FC<SearchPageProps> = ({ params }) => {
             setLoading(true);
             try {
                 const fetchedItems = await getLocationsFromSearchTerm(params.searchTerm);
+                console.log('fetchedItems', fetchedItems); // Add this line
                 setItems(fetchedItems);
 
-                const fetchedTourPackages = await Promise.all(
-                    fetchedItems.map(async (item) => {
-                        return await getTourPackages({ locationId: item.id });
-                    })
-                );
-                setTourPackages(fetchedTourPackages);
+                if (fetchedItems.length > 0) {
+                    const fetchedTourPackages = await Promise.all(
+                        fetchedItems.map(async (item) => {
+                            return await getTourPackages({ locationId: item.id });
+                        })
+                    );
+                    setTourPackages(fetchedTourPackages);
+                }
             } catch (error) {
                 setError(error as string | null);
                 console.error('Error fetching data:', error);
@@ -48,6 +51,10 @@ const SearchPage: React.FC<SearchPageProps> = ({ params }) => {
 
     if (error) {
         return <div>Error: {error}</div>;
+    }
+
+    if (items.length === 0) {
+        return <div>No results found for "{params.searchTerm}"</div>;
     }
 
     return <LocationList title={title} items={items} tourPackages={tourPackages} />;
