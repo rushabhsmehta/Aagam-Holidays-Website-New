@@ -19,29 +19,50 @@ const SearchPage: React.FC<SearchPageProps> = ({ params }) => {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
+        let isMounted = true; // add this line
+    
         const fetchData = async () => {
             setError(null);
             setLoading(true);
             try {
                 const fetchedItems = await getLocationsFromSearchTerm(params.searchTerm);
-                setItems(fetchedItems);
-
+                if (!Array.isArray(fetchedItems)) {
+                    throw new Error('Fetched items is not an array');
+                }
+                if (isMounted) { // check if component is still mounted
+                    setItems(fetchedItems);
+                }
+    
                 if (fetchedItems.length > 0) {
                     const fetchedTourPackages = await Promise.all(
                         fetchedItems.map(async (item) => {
-                            return await getTourPackages({ locationId: item.id });
+                            const packages = await getTourPackages({ locationId: item.id });
+                            if (!Array.isArray(packages)) {
+                                throw new Error('Fetched packages is not an array');
+                            }
+                            return packages;
                         })
                     );
-                    setTourPackages(fetchedTourPackages);
+                    if (isMounted) { // check if component is still mounted
+                        setTourPackages(fetchedTourPackages);
+                    }
                 }
             } catch (error) {
-                setError(error as string);
+                if (isMounted) { // check if component is still mounted
+                    setError(error as string || 'An error occurred');
+                }
                 console.error('Error fetching data:', error);
             }
-            setLoading(false);
+            if (isMounted) { // check if component is still mounted
+                setLoading(false);
+            }
         };
-
+    
         fetchData();
+    
+        return () => {
+            isMounted = false; // set isMounted to false when the component unmounts
+        };
     }, [params.searchTerm]);
 
     if (loading) {
