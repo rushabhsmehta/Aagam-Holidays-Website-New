@@ -10,7 +10,12 @@ const getLocationsFromSearchTerm = async (searchTerm: string): Promise<Location[
       throw new Error(`Failed to fetch locations: ${res.statusText}`);
     }
 
-    const data = await res.json();
+    let data = await res.json();
+
+    // If data is an object, convert it to an array
+    if (typeof data === 'object' && !Array.isArray(data)) {
+      data = [data];
+    }
 
     // Optional validation:
     if (!Array.isArray(data) || !data.every((item: any) => typeof item === 'object')) {
