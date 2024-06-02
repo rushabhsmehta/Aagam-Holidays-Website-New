@@ -1,9 +1,8 @@
 import React from 'react';
 import { Location } from '../../../../../types';
-import getLocationsBySearchTerm from '@/actions/get-locationsfromSearchTerm';
+import getLocationsFromSearchTerm from '@/actions/get-locationsfromSearchTerm';
 import getTourPackages from '@/actions/get-tourPackages';
 import LocationList from '@/components/location-list';
-
 
 interface SearchPageProps {
     params: {
@@ -11,19 +10,22 @@ interface SearchPageProps {
     },
 }
 
-const SearchPage: React.FC<SearchPageProps> = async ({
-    params
-}: { params: { searchTerm: string } }) => {
+const SearchPage: React.FC<SearchPageProps> = async ({ params }) => {
     const title = `Search Results for: ${params.searchTerm}`;
-    const items = await getLocationsBySearchTerm(params.searchTerm );
-    //fetch TourPackage based on each location item
-    const tourPackages = await Promise.all(items.map(async (item) => {
-        return await getTourPackages({ locationId: item.id });
-    }));
-
-    
-
-    return <LocationList title={title} items={items} tourPackages={tourPackages} />;
-
-}
+  
+    try {
+      const items = await getLocationsFromSearchTerm(params.searchTerm);
+      const tourPackages = await Promise.all(
+        items.map(async (item) => {
+          return await getTourPackages({ locationId: item.id });
+        })
+      );
+  
+      return <LocationList title={title} items={items} tourPackages={tourPackages} />;
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      // Handle the error gracefully, e.g., display an error message to the user
+      return <div>Error fetching data. Please try again later.</div>;
+    }
+  };
 export default SearchPage;
