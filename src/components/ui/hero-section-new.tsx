@@ -1,7 +1,5 @@
 'use client'
-import getLocationsBySearchTerm from '@/actions/get-locationsfromSearchTerm';
-import getTourPackages from '@/actions/get-tourPackages';
-import { Router } from 'lucide-react';
+
 // Import necessary components and hooks
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -40,7 +38,7 @@ export default function HeroSectionNew() {
         <form onSubmit={handleSearch} className="mt-8">
           <input
             type="text"
-            placeholder="Search destinations"
+            placeholder="Search....."
             className="text-black rounded-md p-2"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}

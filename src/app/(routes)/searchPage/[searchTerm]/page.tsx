@@ -1,3 +1,4 @@
+'use client'
 import React from 'react';
 import { Location, TourPackage } from '../../../../../types';
 import getLocationsFromSearchTerm from '@/actions/get-locationsfromSearchTerm';
