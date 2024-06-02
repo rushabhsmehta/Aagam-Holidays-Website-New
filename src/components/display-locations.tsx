@@ -1,24 +1,23 @@
 import getLocationsByStore from '@/actions/get-locationsbystore';
-import getTourPackages from "@/actions/get-tourPackages";
-import LocationList from './location-list';
-import NoResults from './ui/no-results';
-import LocationCard from './ui/location-card';
-import LocationCardMain from './ui/location-card-main';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default async function DisplayLocations() {
-  const items = await getLocationsByStore({ storeId: "3eb7df82-57cc-4c68-aaeb-6b2531cd72d5" });
+  const locations = await getLocationsByStore({ storeId: "3eb7df82-57cc-4c68-aaeb-6b2531cd72d5" });
 
   return (
-    <div className="space-y-4 py-4 lg:px-20 md:px-10 sm:px-5">
-      {items.length === 0 && <NoResults />}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {items.map((item, index) => (
-          <div key={item.id} className="my-4">
-            <LocationCardMain data={item} />
-          </div>
+    <div className="container mx-auto py-36 px-8">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-6">
+        {locations.map((location) => (
+          <Link href={`/tourPackages/${location.id}`} key={location.id} className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl w-full h-64 px-4 pb-8 pt-40 max-w-sm mx-auto mt-4">
+            <Image src={location.imageUrl} alt={location.label} width={500} height={500} />
+            <div className="absolute bottom-0 left-0 bg-gradient-to-r from-red-500 to-orange-500 px-4 py-2 text-white text-sm">
+              {location.label}
+            </div>
+          </Link>
         ))}
       </div>
     </div>
-    
+
   );
 }
