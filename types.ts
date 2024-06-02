@@ -125,7 +125,7 @@ export interface Location {
  // isFeatured: boolean;
  // size: Size;
  // color: Color;
-  images: Images[]
+  //images: Images[]
   slug : string;
 };
 

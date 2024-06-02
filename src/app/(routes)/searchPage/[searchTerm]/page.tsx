@@ -1,8 +1,7 @@
 import React from 'react';
 import { Location } from '../../../../../types';
 import getLocationsFromSearchTerm from '@/actions/get-locationsfromSearchTerm';
-import getTourPackages from '@/actions/get-tourPackages';
-import LocationList from '@/components/location-list';
+
 import Image from 'next/image';
 import Link from 'next/link';
 
