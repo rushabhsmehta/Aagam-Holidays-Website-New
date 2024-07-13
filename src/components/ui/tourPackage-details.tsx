@@ -49,7 +49,7 @@ const TourPackageDetails: React.FC<TourPackageDetailsProps> = ({ data, hotels, l
                 <div className="flex-1">
                   <h1
                     className="text-xl bg-gradient-to-r from-yellow-500 via-red-400 to-orange-400 text-transparent bg-clip-text font-bold lg:px-8 md:px-8"
-                    dangerouslySetInnerHTML={{ __html: `Day ${itinerary.dayNumber}: ${itinerary.itineraryTitle}` || '' }}
+                    dangerouslySetInnerHTML={{ __html: `Day ${itinerary.dayNumber}: ${itinerary.days} - ${itinerary.itineraryTitle}` || '' }}
                   >
                   </h1>
                   
