@@ -8,6 +8,7 @@ import GalleryTab from "./gallery-tab";
 import { Images } from "../../../types";
 
 interface GalleryProps {
+  
   images: Images[];
 }
 
